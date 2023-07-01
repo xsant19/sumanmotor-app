@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home.components.pages.index-home');
 });
-Route::get('/', 'LandingController@index')->name('landing');
+
+Route::get('/login', function () {
+    return view('home.components.pages.login-home');
+});
+
+Route::get('/register', function () {
+    return view('home.components.pages.register-home');
+});
+
+Route::get('/dashboard-admin', [DashboardController::class, 'index']);
