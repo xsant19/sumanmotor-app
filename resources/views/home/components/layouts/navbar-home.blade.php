@@ -7,7 +7,7 @@
         </a>
         <ul class="ml-auto mr-8 hidden items-center gap-6 lg:flex">
             <li class="block p-1 font-sans text-sm font-normal leading-normal text-inherit antialiased">
-                <a class="flex items-center" href="#">
+                <a class="flex items-center" href="{{ route('halaman.utama') }}">
                     Beranda
                 </a>
             </li>
@@ -22,8 +22,7 @@
                 </a>
             </li>
             <li class="block p-1 font-sans text-sm font-normal leading-normal text-inherit antialiased">
-                <a class="flex items-center" href="#">
-
+                <a class="flex items-center" href="{{ route('faq.utama') }}">
                     FAQ
                 </a>
             </li>
@@ -31,7 +30,7 @@
         <button
             class="middle none center hidden rounded-lg bg-gradient-to-tr from-red-600 to-red-400 py-2 px-4 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:inline-block"
             type="button" data-ripple-light="true">
-            <span>Akun Anda</span>
+            <span><a href="{{ route('login') }}">Akun anda</a></span>
         </button>
 
         {{-- MOBILE --}}
@@ -72,7 +71,7 @@
             <button
                 class="mb-2 block w-full rounded-lg bg-gradient-to-tr from-red-600 to-red-400 py-2 px-4 font-sans text-xs font-bold uppercase text-white shadow-md shadow-pink-500/20 transition-all hover:shadow-lg hover:shadow-pink-500/40 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                 type="button" data-ripple-light="true">
-                <span>Akun Anda</span>
+                <span><a href="{{ route('login') }}">Akun Anda</a></span>
             </button>
         </ul>
     </div>

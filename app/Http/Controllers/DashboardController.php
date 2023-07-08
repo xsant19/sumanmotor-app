@@ -11,4 +11,8 @@ class DashboardController extends Controller
     {
         return view('dashboard.components.pages.index-dashboard');
     }
+    public function pelanggan(): View
+    {
+        return view('home.components.pages.pelanggan-home');
+    }
 }

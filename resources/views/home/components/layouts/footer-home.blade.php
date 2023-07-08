@@ -1,4 +1,4 @@
-<footer class="w-full bg-white p-8">
+<footer class="w-full bg-white p-8 relative">
     <div
         class="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-white text-center md:justify-between">
         <img src="./assets/img/logo.png" alt="logo-ct" class="w-10" />
