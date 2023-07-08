@@ -51,6 +51,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
 
 Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
+Route::post('/register', [AuthController::class, 'store'])->middleware('guest');
 
 
 Route::middleware(['auth'])->group(function () {

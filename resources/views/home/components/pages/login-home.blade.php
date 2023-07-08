@@ -6,6 +6,13 @@
                 <h1 class="font-bold text-center text-2xl mb-5">Your Logo</h1>
                 <div class="bg-white shadow w-full rounded-lg divide-y divide-gray-200">
                     <div class="px-5 py-7">
+                        @if (session()->has('success'))
+                            <div
+                                class="font-regular relative mb-4 block w-full rounded-lg bg-gradient-to-tr from-green-600 to-green-400 p-4 text-base leading-5 text-white opacity-100">
+                                <i class="fas fa-exclamation mr-2"></i>
+                                {{ session('success') }}
+                            </div>
+                        @endif
                         @if ($errors->any())
                             @foreach ($errors->all() as $error)
                                 <div

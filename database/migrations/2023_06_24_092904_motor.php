@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('no_polisi')->required();
             $table->string('jenis_motor')->required();
             $table->string('merk_motor')->required();
-            $table->string('id_user')->required();
+            $table->string('user_id')->required();
             $table->timestamps();
         });
     }

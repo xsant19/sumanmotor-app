@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('kilometer')->required();
             $table->string('kerusakan')->required();
             $table->string('jam_service')->required();
-            $table->string('id_montir')->required();
+            $table->string('montir_id')->required();
             $table->timestamps();
         });
     }

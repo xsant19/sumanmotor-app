@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -43,5 +45,22 @@ class AuthController extends Controller
     public function register()
     {
         return view('home.components.pages.register-home');
+    }
+
+    public function store(Request $request)
+    {
+        $validateData = $request->validate([
+            'nama' => 'required|max:255',
+            'username' => ['required', 'min:3', 'max:255', 'unique:users'],
+            'email' => 'required|email|unique:users',
+            'password' => 'required|max:255',
+            'alamat' => 'required|min:11|max:255',
+            'no_telp' => 'required|min:11|max:13',
+        ]);
+        $validateData['role_id'] = 2;
+        $validateData['password'] = Hash::make($validateData['password']);
+        User::create($validateData);
+
+        return redirect('/login')->with('success', 'Registrasi Berhasil!! Silahkan Login');
     }
 }
