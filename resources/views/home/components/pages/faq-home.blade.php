@@ -12,8 +12,8 @@
                 <div class="mb-8 flex justify-center md:mb-0 md:w-5/12">
                     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
                     <lottie-player class="max-h-[500px] md:max-h-max"
-                        src="https://assets7.lottiefiles.com/packages/lf20_r3auoDsc3t.json" background="transparent"
-                        speed="0.5"autoplay>
+                        src="https://assets7.lottiefiles.com/packages/lf20_r3auoDsc3t.json" background="transparent" speed=1
+                        autoplay>
                     </lottie-player>
                 </div>
 
@@ -66,7 +66,8 @@
                                 <button type="button" class="w-full rounded-lg bg-red-50 px-8 py-6 text-left"
                                     @click="selected !== 3 ? selected = 3 : selected = null">
                                     <div class="flex items-center justify-between">
-                                        <h4 class="font-medium text-slate-600">Lorem ipsum dolor sit, amet consectetur?</h4>
+                                        <h4 class="font-medium text-slate-600">Apa metode pembayaran yang diterima di
+                                            bengkel Anda?</h4>
                                         <ion-icon name="chevron-down-circle-outline" class="w-8 text-lg text-red-500">
                                         </ion-icon>
                                     </div>
@@ -86,7 +87,8 @@
                                 <button type="button" class="w-full rounded-lg bg-red-50 px-8 py-6 text-left"
                                     @click="selected !== 4 ? selected = 4 : selected = null">
                                     <div class="flex items-center justify-between">
-                                        <h4 class="font-medium text-slate-600">Lorem ipsum dolor sit, amet consectetur?</h4>
+                                        <h4 class="font-medium text-slate-600">Apakah hari libur National bengkel Suman
+                                            Motor buka dan dapat melakukan service kendaraan saya?</h4>
                                         <ion-icon name="chevron-down-circle-outline" class="w-8 text-lg text-red-500">
                                         </ion-icon>
                                     </div>
