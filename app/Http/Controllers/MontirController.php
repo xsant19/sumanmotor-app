@@ -11,12 +11,12 @@ class MontirController extends Controller
     {
         $montirs = Montir::all();
 
-        return view('dashboard.components.montir.index-montir', compact('montirs'));
+        return view('dashboard.components.pages.montir.index-montir', compact('montirs'));
     }
 
     public function create()
     {
-        return view('dashboard.components.montir.create-montir');
+        return view('dashboard.components.pages.montir.create-montir');
     }
 
     public function store(Request $request)
@@ -35,7 +35,7 @@ class MontirController extends Controller
 
     public function edit(Montir $montir)
     {
-        return view('dashboard.components.montir.edit-montir', compact('montir'));
+        return view('dashboard.components.pages.montir.edit-montir', compact('montir'));
     }
 
     public function update(Request $request, Montir $montir)
