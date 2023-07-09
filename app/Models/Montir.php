@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Montir extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'nama',
+        'alamat',
+        'no_telepon',
+    ];
 }

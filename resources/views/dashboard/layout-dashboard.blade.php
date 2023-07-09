@@ -9,9 +9,10 @@
     <main class="ease-soft-in-out xl:ml-68.5 relative h-full max-h-screen rounded-xl transition-all duration-200">
         @include('dashboard.components.layouts.navbar-dashboard')
         @yield('content')
+        @include('dashboard.components.layouts.footer-dashboard')
+        @include('dashboard.components.layouts.fixed-plugin-dashboard')
+        @include('dashboard.components.utils.script-dashboard')
     </main>
-    @include('dashboard.components.layouts.fixed-plugin-dashboard')
-    @include('dashboard.components.utils.script-dashboard')
 </body>
 
 </html>
