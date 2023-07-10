@@ -35,8 +35,11 @@
                                     x-ref="container1"
                                     x-bind:style="selected == 1 ? 'max-height: ' + $refs.container1.scrollHeight + 'px' : ''">
                                     <div class="p-6">
-                                        <p class="text-slate-500">ipsum! Assumenda, dolorem nihil. Commodi, qui? Officiis
-                                            provident, cumque perspiciatis magni commodi rem nihil,</p>
+                                        <p class="text-slate-500">Terkait pertanyaan Anda, di bengkel kami, kami menyediakan
+                                            layanan di lokasi untuk memperbaiki kendaraan Anda. Namun, saat ini kami belum
+                                            menyediakan layanan pengambilan dan pengantaran kendaraan. Anda dapat membawa
+                                            kendaraan Anda langsung ke bengkel kami untuk mendapatkan layanan perbaikan yang
+                                            Anda butuhkan</p>
                                     </div>
                                 </div>
                             </li>
@@ -56,8 +59,12 @@
                                     x-ref="container2"
                                     x-bind:style="selected == 2 ? 'max-height: ' + $refs.container2.scrollHeight + 'px' : ''">
                                     <div class="p-6">
-                                        <p class="text-slate-500">ipsum! Assumenda, dolorem nihil. Commodi, qui? Officiis
-                                            provident, cumque perspiciatis magni commodi rem nihil,</p>
+                                        <p class="text-slate-500">Di bengkel Suman Motor, kami menyediakan opsi suku cadang
+                                            asli maupun suku cadang aftermarket. Kami mengerti bahwa preferensi pelanggan
+                                            dapat bervariasi, oleh karena itu kami berusaha memenuhi kebutuhan dan
+                                            preferensi Anda. Jika Anda menginginkan suku cadang asli yang diproduksi oleh
+                                            pabrikan kendaraan, kami dapat memesan dan menggunakannya untuk perbaikan
+                                            kendaraan Anda.</p>
                                     </div>
                                 </div>
                             </li>
@@ -77,8 +84,8 @@
                                     x-ref="container3"
                                     x-bind:style="selected == 3 ? 'max-height: ' + $refs.container3.scrollHeight + 'px' : ''">
                                     <div class="p-6">
-                                        <p class="text-slate-500">ipsum! Assumenda, dolorem nihil. Commodi, qui? Officiis
-                                            provident, cumque perspiciatis magni commodi rem nihil,</p>
+                                        <p class="text-slate-500"> Di bengkel Suman Motor, kami hanya menerima metode
+                                            pembayaran langsung di tempat</p>
                                     </div>
                                 </div>
                             </li>

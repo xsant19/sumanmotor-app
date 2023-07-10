@@ -11,6 +11,6 @@ class Montir extends Model
     protected $fillable = [
         'nama',
         'alamat',
-        'no_telepon',
+        'no_telp',
     ];
 }

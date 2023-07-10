@@ -13,11 +13,9 @@ return new class extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('status_service')->required();
-            $table->string('kilometer')->required();
-            $table->string('kerusakan')->required();
-            $table->string('jam_service')->required();
-            $table->string('montir_id')->required();
+            $table->string('jenis_service', 30);
+            $table->integer('harga_service');
+            $table->enum('status_service', ['Sudah', 'Belum'])->default('Belum');
             $table->timestamps();
         });
     }

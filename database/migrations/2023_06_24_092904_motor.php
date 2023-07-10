@@ -13,12 +13,10 @@ return new class extends Migration
     {
         Schema::create('motors', function (Blueprint $table) {
             $table->id();
-            $table->string('nama')->required();
-            $table->string('warna')->required();
-            $table->string('no_polisi')->required();
-            $table->string('jenis_motor')->required();
-            $table->string('merk_motor')->required();
-            $table->string('user_id')->required();
+            $table->string('nama', 30)->required();
+            $table->string('merk_motor', 11)->required();
+            $table->string('jenis_motor', 11)->required();
+            $table->string('no_polisi', 15)->required();
             $table->timestamps();
         });
     }

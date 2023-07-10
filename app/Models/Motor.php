@@ -10,7 +10,9 @@ class Motor extends Model
     use HasFactory;
     protected $fillable = [
         'nama',
-        'alamat',
-        'no_telepon',
+        'merk_motor',
+        'jenis_motor',
+        'no_polisi',
+        'user_id',
     ];
 }

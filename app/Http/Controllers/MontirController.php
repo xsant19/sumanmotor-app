@@ -24,7 +24,7 @@ class MontirController extends Controller
         $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
-            'no_telepon' => 'required',
+            'no_telp' => 'required',
         ]);
 
         Montir::create($request->all());
@@ -43,7 +43,7 @@ class MontirController extends Controller
         $request->validate([
             'nama' => 'required',
             'alamat' => 'required',
-            'no_telepon' => 'required',
+            'no_telp' => 'required',
         ]);
 
         $montir->update($request->all());

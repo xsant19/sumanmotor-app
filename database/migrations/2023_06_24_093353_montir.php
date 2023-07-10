@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('montirs', function (Blueprint $table) {
             $table->id();
-            $table->string('nama')->required();
-            $table->string('no_telepon')->required();
-            $table->string('alamat')->required();
+            $table->string('nama', 30)->required();
+            $table->string('no_telp', 14)->required();
+            $table->string('alamat', 120)->required();
             $table->timestamps();
         });
     }

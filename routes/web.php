@@ -58,7 +58,6 @@ Route::post('/register', [AuthController::class, 'store'])->middleware('guest');
 
 // CRUD USER
 
-
 // CRUD MOTOR
 
 // CRUD SERVICE
@@ -70,14 +69,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard-pelanggan', [DashboardController::class, 'pelanggan'])->name('dashboard.pelanggan');
 
     //LOGIN,LOGOUT DAN REGISTER
-
-    //CRUD MONTIR
-    Route::get('/montirs', [MontirController::class, 'index'])->name('montirs.index');
-    Route::get('/montirs/create', [MontirController::class, 'create'])->name('montirs.create');
-    Route::post('/montirs', [MontirController::class, 'store'])->name('montirs.store');
-    Route::get('/montirs/{montir}/edit', [MontirController::class, 'edit'])->name('montirs.edit');
-    Route::put('/montirs/{montir}', [MontirController::class, 'update'])->name('montirs.update');
-    Route::delete('/montirs/{montir}', [MontirController::class, 'destroy'])->name('montirs.destroy');
 
     //CRUD MONTIR
     Route::get('/montirs', [MontirController::class, 'index'])->name('montirs.index');

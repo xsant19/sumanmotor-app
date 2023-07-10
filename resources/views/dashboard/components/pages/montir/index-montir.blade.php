@@ -1,6 +1,12 @@
 @extends('dashboard.layout-dashboard')
 @section('content')
     <div class="w-full px-6 py-6 mx-auto">
+        @if ($message = Session::get('success'))
+            <div
+                class="relative p-2 mb-3 text-sm text-white border border-solid rounded-lg bg-gradient-to-tl from-green-600 to-lime-400 border-lime-300">
+                {{ $message }}
+            </div>
+        @endif
         <div
             class="relative flex flex-col w-full min-w-0 mb-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
             <div class="p-6 pb-0 mb-0 bg-white rounded-t-2xl flex justify-between">
@@ -10,9 +16,7 @@
                         href="{{ route('montirs.create') }}">Tambah
                         Data</a></button>
             </div>
-            @if ($message = Session::get('success'))
-                <div class="relative w-full p-4 text-white rounded-lg bg-lime-500">{{ $message }}</div>
-            @endif
+
             <div class="flex-auto px-0 pt-0 pb-2">
                 <div class="p-0 overflow-x-auto">
                     <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">
@@ -48,14 +52,14 @@
                                     </td>
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap shadow-transparent">
-                                        <p class="mb-0 font-semibold leading-tight text-xs">{{ $montir->no_telepon }}</p>
+                                        <p class="mb-0 font-semibold leading-tight text-xs">{{ $montir->no_telp }}</p>
                                     </td>
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap shadow-transparent">
                                         <div>
-                                            @csrf
                                             <form action="{{ route('montirs.destroy', $montir->id) }}" method="POST">
                                                 <a href="{{ route('montirs.edit', $montir->id) }}">Edit</a>
+                                                @csrf
                                                 @method('DELETE')
                                                 <button type="submit">Delete</button>
                                             </form>
@@ -68,5 +72,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 @endsection
