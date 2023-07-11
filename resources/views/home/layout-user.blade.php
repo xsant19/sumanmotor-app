@@ -13,11 +13,12 @@
                         <i class="fas fa-tachometer-alt mr-2"></i>
                         Dashboard
                     </a>
-                    <a href="{{ route('order.user') }}" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
+                    <a href="{{ route('orders.home') }}" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
                         <i class="fas fa-shopping-cart mr-2"></i>
                         Order
                     </a>
-                    <a href="#" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
+                    <a href="{{ route('riwayat.home') }}"
+                        class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
                         <i class="fas fa-history mr-2"></i>
                         Riwayat Transaksi
                     </a>

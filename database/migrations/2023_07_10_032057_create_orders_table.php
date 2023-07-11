@@ -14,12 +14,13 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->string('no_order');
+            $table->string('no_antri', 30);
             $table->date('tanggal_order');
             $table->text('kendala');
             $table->enum('status_order', ['menunggu', 'terkonfirmasi', 'sedang diproses', 'selesai'])->default('menunggu');
-            $table->double('total_harga', 12);
+            $table->double('total_harga', 12)->default(0);
             $table->unsignedBigInteger('motor_id');
-            $table->unsignedBigInteger('montir_id');
+            $table->unsignedBigInteger('montir_id')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

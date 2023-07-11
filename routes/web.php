@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\MontirController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -26,9 +27,7 @@ Route::get('/', function () {
     return view('home.components.pages.index-home');
 })->name('halaman.utama');
 
-Route::get('/order-user', function () {
-    return view('home.components.pages.order-home');
-})->name('order.user');
+
 
 // Route::get('/kontak-kami', function () {
 //     return view('home.components.pages.kontakkami-home');
@@ -102,4 +101,9 @@ Route::middleware(['auth'])->group(function () {
         [UserController::class, 'update']
     )->name('users.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+    //CRUD ORDER
+    Route::get('/orders.user', [OrderController::class, 'createorderuser'])->name('orders.home');
+    Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+    Route::get('/riwayat.home', [OrderController::class, 'riwayathome'])->name('riwayat.home');
 });
