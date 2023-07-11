@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('jenis_service', 30);
             $table->double('harga_service', 12);
             $table->text('deskripsi', 30);
-            $table->unsignedBigInteger('order_id');
             $table->timestamps();
 
             // Mendifinisikan Relasi pada database
