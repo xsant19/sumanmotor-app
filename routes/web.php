@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\MontirController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -24,17 +26,27 @@ Route::get('/', function () {
     return view('home.components.pages.index-home');
 })->name('halaman.utama');
 
-Route::get('/kontak-kami', function () {
-    return view('home.components.pages.kontakkami-home');
-})->name('kontak.utama');
+Route::get('/order-user', function () {
+    return view('home.components.pages.order-home');
+})->name('order.user');
 
-Route::get('/faq', function () {
-    return view('home.components.pages.faq-home');
-})->name('faq.utama');
+// Route::get('/kontak-kami', function () {
+//     return view('home.components.pages.kontakkami-home');
+// })->name('kontak.utama');
 
-Route::get('/tentang-kami', function () {
-    return view('home.components.pages.tentangkami-home');
-})->name('tentangkami.utama');
+// Route::get('/faq', function () {
+//     return view('home.components.pages.faq-home');
+// })->name('faq.utama');
+
+// Route::get('/tentang-kami', function () {
+//     return view('home.components.pages.tentangkami-home');
+// })->name('tentangkami.utama');
+
+
+// Routing Landing Page
+Route::get('/kontak-kami', [LandingPageController::class, 'kontak'])->name('kontak');
+Route::get('/faq', [LandingPageController::class, 'faq'])->name('faq');
+Route::get('/tentang-kami', [LandingPageController::class, 'tentangkami'])->name('tentang.kami');
 
 
 // Route::get('/login', function () {
@@ -56,7 +68,6 @@ Route::post('/register', [AuthController::class, 'store'])->middleware('guest');
 
 
 
-// CRUD USER
 
 // CRUD MOTOR
 
@@ -77,4 +88,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/montirs/{montir}/edit', [MontirController::class, 'edit'])->name('montirs.edit');
     Route::put('/montirs/{montir}', [MontirController::class, 'update'])->name('montirs.update');
     Route::delete('/montirs/{montir}', [MontirController::class, 'destroy'])->name('montirs.destroy');
+
+    // CRUD USER
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get(
+        '/users/create',
+        [UserController::class, 'create']
+    )->name('users.create');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::put(
+        '/users/{user}',
+        [UserController::class, 'update']
+    )->name('users.update');
+    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 });

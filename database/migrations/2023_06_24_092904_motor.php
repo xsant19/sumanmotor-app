@@ -17,7 +17,11 @@ return new class extends Migration
             $table->string('merk_motor', 11)->required();
             $table->string('jenis_motor', 11)->required();
             $table->string('no_polisi', 15)->required();
+            $table->unsignedBigInteger('user_id')->required();
             $table->timestamps();
+
+            // Mendifinisikan Relasi pada database
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

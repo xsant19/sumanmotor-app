@@ -14,9 +14,13 @@ return new class extends Migration
         Schema::create('services', function (Blueprint $table) {
             $table->id();
             $table->string('jenis_service', 30);
-            $table->integer('harga_service');
-            $table->enum('status_service', ['Sudah', 'Belum'])->default('Belum');
+            $table->double('harga_service', 12);
+            $table->text('deskripsi', 30);
+            $table->unsignedBigInteger('order_id');
             $table->timestamps();
+
+            // Mendifinisikan Relasi pada database
+            // $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 

@@ -17,8 +17,8 @@
 <script type="text/javascript">
     $(function() {
         $('#myDiv').floatingWhatsApp({
-            phone: '5491133359850',
-            popupMessage: 'Hello, how can we help you?',
+            phone: '+62895410901387',
+            popupMessage: 'Halo, Suman Motor, saya ingin bertanya?',
             showPopup: true
         });
     });

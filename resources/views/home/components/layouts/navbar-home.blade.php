@@ -12,17 +12,17 @@
                 </a>
             </li>
             <li class="block p-1 font-sans text-sm font-normal leading-normal text-inherit antialiased">
-                <a class="flex items-center" href="#">
+                <a class="flex items-center" href="{{ route('kontak') }}">
                     Kontak Kami
                 </a>
             </li>
             <li class="block p-1 font-sans text-sm font-normal leading-normal text-inherit antialiased">
-                <a class="flex items-center" href="#">
+                <a class="flex items-center" href="{{ route('tentang.kami') }}">
                     Tentang Kami
                 </a>
             </li>
             <li class="block p-1 font-sans text-sm font-normal leading-normal text-inherit antialiased">
-                <a class="flex items-center" href="{{ route('faq.utama') }}">
+                <a class="flex items-center" href="{{ route('faq') }}">
                     FAQ
                 </a>
             </li>

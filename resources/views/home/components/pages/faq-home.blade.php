@@ -105,8 +105,13 @@
                                     x-ref="container4"
                                     x-bind:style="selected == 4 ? 'max-height: ' + $refs.container4.scrollHeight + 'px' : ''">
                                     <div class="p-6">
-                                        <p class="text-slate-500">ipsum! Assumenda, dolorem nihil. Commodi, qui? Officiis
-                                            provident, cumque perspiciatis magni commodi rem nihil,</p>
+                                        <p class="text-slate-500">Kami buka setiap hari untuk melayani layanan service
+                                            kendaraan Anda. Namun, jika terdapat penutupan atau perubahan jadwal yang tidak
+                                            terduga, informasi akan diumumkan melalui akun media sosial resmi Suman Motor.
+                                            Kami mengundang Anda untuk mengikuti akun media sosial kami untuk mendapatkan
+                                            informasi terbaru seputar jadwal operasional, penutupan hari libur, dan layanan
+                                            yang tersedia. Terima kasih atas perhatiannya, dan kami siap melayani kebutuhan
+                                            service kendaraan Anda.</p>
                                     </div>
                                 </div>
                             </li>

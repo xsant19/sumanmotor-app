@@ -13,13 +13,20 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->dateTime('tanggal_mulai')->required();
-            $table->dateTime('tanggal_selesai');
-            $table->timestamps();
+            $table->string('no_order');
+            $table->date('tanggal_order');
+            $table->text('kendala');
+            $table->enum('status_order', ['menunggu', 'terkonfirmasi', 'sedang diproses', 'selesai'])->default('menunggu');
+            $table->double('total_harga', 12);
             $table->unsignedBigInteger('motor_id');
-            $table->foreign('motor_id')->references('id')->on('motors')->onDelete('restrict');
-            $table->unsignedBigInteger('service_id');
-            $table->foreign('service_id')->references('id')->on('services')->onDelete('restrict');
+            $table->unsignedBigInteger('montir_id');
+            $table->unsignedBigInteger('user_id');
+            $table->timestamps();
+
+            // Mendifinisikan Relasi pada database
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('motor_id')->references('id')->on('motors');
+            $table->foreign('montir_id')->references('id')->on('montirs');
         });
     }
 
