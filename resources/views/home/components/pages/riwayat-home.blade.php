@@ -12,7 +12,7 @@
                             <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Motor</th>
                             <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Tanggal Order</th>
                             <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Status Order</th>
-                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Aksi</th>
+                            <th class="px-6 py-3 text-center text-sm font-medium text-gray-700">Aksi</th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
@@ -23,7 +23,14 @@
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $order->motor->nama }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $order->tanggal_order }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $order->status_order }}</td>
-                                <td class="px-6 py-4 whitespace-nowrap"></td>
+                                <td class="px-6 py-4 whitespace-nowrap"><button
+                                        class="text-blue-500 hover:text-blue-700 mr-2">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="text-green-500 hover:text-green-700">
+                                        <i class="fas fa-print"></i>
+                                    </button>
+                                </td>
                                 </td>
                             </tr>
                         @endforeach

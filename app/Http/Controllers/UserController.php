@@ -33,7 +33,7 @@ class UserController extends Controller
         $request->validate([
             'nama' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
+            'password' => 'required|min:3',
             'alamat' => 'required',
             'no_telp' => 'required',
             'role_id' => 'required',
@@ -72,14 +72,14 @@ class UserController extends Controller
         $request->validate([
             'nama' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
-            'password' => 'nullable|min:8',
+            'password' => 'nullable | min:3',
             'alamat' => 'required',
             'no_telp' => 'required',
             'role_id' => 'required',
         ]);
 
         $data = $request->all();
-        if ($request->has('password')) {
+        if (isset($request['password'])) {
             $data['password'] = Hash::make($request->input('password'));
         } else {
             unset($data['password']);

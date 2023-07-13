@@ -1,5 +1,7 @@
-@extends('dashboard.layout-dashboard')
-@section('title', 'Dashboard Suman Motor')
+@extends('dashboard.app-admin')
+@section('action')
+@section('title', 'Dashboard Admin Suman Motor')
+
 @section('content')
     <!-- cards -->
     <div class="w-full px-6 py-6 mx-auto">

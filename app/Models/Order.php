@@ -18,8 +18,14 @@ class Order extends Model
         'total_harga',
         'user_id',
     ];
+
     public function motor(): BelongsTo
     {
         return $this->belongsTo(Motor::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

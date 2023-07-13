@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('no_order');
             $table->string('no_antri', 30);
-            $table->date('tanggal_order');
+            $table->dateTime('tanggal_order')->default(now('+8'));
             $table->text('kendala');
-            $table->enum('status_order', ['menunggu', 'terkonfirmasi', 'sedang diproses', 'selesai'])->default('menunggu');
+            $table->enum('status_order', ['Menunggu', 'Sedang Diproses', 'Selesai'])->default('Menunggu');
             $table->double('total_harga', 12)->default(0);
             $table->unsignedBigInteger('motor_id');
             $table->unsignedBigInteger('montir_id')->nullable();

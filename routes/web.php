@@ -4,6 +4,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\MontirController;
+use App\Http\Controllers\MotorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
@@ -28,20 +29,6 @@ Route::get('/', function () {
 })->name('halaman.utama');
 
 
-
-// Route::get('/kontak-kami', function () {
-//     return view('home.components.pages.kontakkami-home');
-// })->name('kontak.utama');
-
-// Route::get('/faq', function () {
-//     return view('home.components.pages.faq-home');
-// })->name('faq.utama');
-
-// Route::get('/tentang-kami', function () {
-//     return view('home.components.pages.tentangkami-home');
-// })->name('tentangkami.utama');
-
-
 // Routing Landing Page
 Route::get('/kontak-kami', [LandingPageController::class, 'kontak'])->name('kontak');
 Route::get('/faq', [LandingPageController::class, 'faq'])->name('faq');
@@ -59,16 +46,11 @@ Route::get('/register', function () {
 // LOGIN SISTEM
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'authenticating'])->name('auth')->middleware('guest');
-Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
+Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
 
 Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
 Route::post('/register', [AuthController::class, 'store'])->middleware('guest');
-
-
-
-
-// CRUD MOTOR
 
 // CRUD SERVICE
 
@@ -106,4 +88,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders.user', [OrderController::class, 'createorderuser'])->name('orders.home');
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
     Route::get('/riwayat.home', [OrderController::class, 'riwayathome'])->name('riwayat.home');
+    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/acc-order/{id}', [OrderController::class, 'confirm'])->name('orders.confirm');
+
+    //CRUD MOTOR
+    Route::get('/motor.user', [MotorController::class, 'viewmotoruser'])->name('motors.home');
+
+    //CRUD SERVICE
+
+
 });

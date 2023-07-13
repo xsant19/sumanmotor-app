@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     {
         User::create([
             'nama' => 'Admin',
-            'email' => 'Admin123@gmailcom',
+            'email' => 'Admin123@gmail.com',
             'password' => Hash::make('123'),
             'alamat' => 'Jalan Cekomaria 20',
             'no_telp' => '081339115093',
@@ -24,7 +24,7 @@ class UserSeeder extends Seeder
         ]);
         User::create([
             'nama' => 'Sumantara',
-            'email' => 'Sumantara13@gmailcom',
+            'email' => 'Sumantara13@gmail.com',
             'password' => Hash::make('123'),
             'alamat' => 'Jalan Cekomaria 25',
             'no_telp' => '081339115092',

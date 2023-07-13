@@ -11,10 +11,28 @@ use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
+
+    public function index()
+    {
+        $orders = Order::all();
+        return view('dashboard.components.pages.order.index-order', compact('orders'));
+    }
+
+    public function confirm($id)
+    {
+        $order =  Order::find($id);
+
+        $motors = Motor::where('user_id', $order->user_id)->get();
+        return view('dashboard.components.pages.order.acc-order', compact('order', 'motors'));
+    }
+
     public function createorderuser()
     {
         return view('home.components.pages.order-home');
     }
+
+
+
 
     public function store(Request $request)
     {
@@ -29,7 +47,7 @@ class OrderController extends Controller
 
         //Acuan tanggal order : Jika order hari ini setelah jam 6 sore saat ini dihitung hari ini , jika order sebelum jam 6 sore maka dihitung orderan kemarin
         $date_start = Carbon::now('+8')->format('H') > 18 ? Carbon::now('+8')->hour(18)->minute(0)->second(0) : Carbon::now()->hour(18)->minute(0)->second(0)->subDay();
-        $order_count = Order::where('created_at', '>=', $date_start->format('Y-m-d H:i:s'))->count();
+        $order_count = Order::where('tanggal_order', '>=', $date_start->format('Y-m-d H:i:s'))->count();
 
 
         $order = new Order();
@@ -38,7 +56,6 @@ class OrderController extends Controller
         $order->no_order = 'SMN' . strtoupper($randomString) . Carbon::now()->format('dHis');
         //pengingat
         $order->no_antri = $order_count + 1;
-        $order->tanggal_order = Carbon::now('+8')->format('Y-m-d');
         $order->kendala = $request['kendala'];
         $order->motor_id = $motor->id;
         $order->user_id = Auth::user()->id;

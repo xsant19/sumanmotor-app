@@ -17,6 +17,11 @@
                         <i class="fas fa-shopping-cart mr-2"></i>
                         Order
                     </a>
+                    <a href="{{ route('motors.home') }}"
+                        class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
+                        <i class="fas fa-motorcycle mr-2"></i>
+                        Motor
+                    </a>
                     <a href="{{ route('riwayat.home') }}"
                         class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
                         <i class="fas fa-history mr-2"></i>
