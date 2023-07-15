@@ -1,4 +1,5 @@
 @extends('dashboard.layout-dashboard')
+@section('title', 'Tambah Pelanggan')
 @section('content')
     <div class="py-6">
         <div class="max-w-4xl mx-auto">

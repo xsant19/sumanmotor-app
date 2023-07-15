@@ -1,4 +1,5 @@
 @extends('dashboard.layout-dashboard')
+@section('title', 'Edit Montir')
 @section('content')
     <div class="w-full px-6 py-6 mx-auto">
         @if ($errors->any())
@@ -21,7 +22,7 @@
                         href="{{ route('montirs.index') }}">Kembali</a></button>
             </div>
 
-            <div class="flex-auto px-0 pt-0 pb-2 border-b border-gray-200">
+            <div class="flex-auto px-0 pt-0 border-b border-gray-200">
                 <form action="{{ route('montirs.update', $montir->id) }}" method="POST"
                     class="p-6 pb-3 mb-3 bg-white rounded-t-2xl">
                     @csrf

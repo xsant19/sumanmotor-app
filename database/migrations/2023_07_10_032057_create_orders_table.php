@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
+            $table->string('username');
+            $table->string('no_telp');
             $table->string('no_order');
             $table->string('no_antri', 30);
             $table->dateTime('tanggal_order');

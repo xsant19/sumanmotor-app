@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
+    // public function index()
+    // {
+    //     $services = Service::all();
+
+
+    // }
+
+
+
     public function store(Request $request)
     {
         $request->validate([

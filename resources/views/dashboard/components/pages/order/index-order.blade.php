@@ -1,4 +1,5 @@
 @extends('dashboard.layout-dashboard')
+@section('title', 'Tabel Order')
 @section('content')
     <div class="w-full px-6 py-6 mx-auto">
         {{-- @if ($message = Session::get('success'))
@@ -28,6 +29,10 @@
                                 </th>
                                 <th
                                     class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    Nomor Antri
+                                </th>
+                                <th
+                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                     Nomor Order
                                 </th>
                                 <th
@@ -52,6 +57,10 @@
                                         </div>
                                     </td>
                                     <td
+                                        class="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                        <p class="mb-0 font-semibold leading-tight text-xs">{{ $order->no_antri }}</p>
+                                    </td>
+                                    <td
                                         class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                         <p class="mb-0 font-semibold leading-tight text-xs">{{ $order->no_order }}</p>
                                     </td>
@@ -68,6 +77,10 @@
                                         <div>
                                             <div>
                                                 <button class="text-green-500 hover:text-blue-700 mr-2"
+                                                    onclick="window.location.href = '{{ route('orders.close', $order->id) }}'">
+                                                    <i class="fas fa-check"></i>
+                                                </button>
+                                                <button class="text-blue-500 hover:text-blue-700 mr-2"
                                                     onclick="window.location.href = '{{ route('orders.detail', $order->id) }}'">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
@@ -75,6 +88,7 @@
                                                     onclick="window.location.href = '#'">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
+
                                             </div>
                                         </div>
                                     </td>

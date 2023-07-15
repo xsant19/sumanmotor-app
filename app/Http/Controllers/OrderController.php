@@ -16,7 +16,7 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::where('status_order', '!=', 'Selesai')->get();
         return view('dashboard.components.pages.order.index-order', compact('orders'));
     }
 
@@ -42,6 +42,14 @@ class OrderController extends Controller
         return redirect()->route('orders.detail', ['id' => $id]);
     }
 
+    public function close($id)
+    {
+        $order =  Order::find($id);
+        $order->status_order = 'Selesai';
+        $order->save();
+        return redirect()->route('orders.detail', ['id' => $id]);
+    }
+
 
 
     public function createorderuser()
@@ -55,8 +63,14 @@ class OrderController extends Controller
         return view('dashboard.components.pages.order.progress-order', compact('order'));
     }
 
+
+
     public function store(Request $request)
     {
+        $request->validate([
+            'no_polisi' => 'unique:App\Models\Motor,no_polisi'
+        ]);
+
         $motor = new Motor();
         // Nama Model -> Column pada database = Mengisi Value dengan data dari name pada form ()
         $motor->user_id = Auth::user()->id;

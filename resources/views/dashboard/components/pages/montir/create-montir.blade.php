@@ -1,4 +1,5 @@
 @extends('dashboard.layout-dashboard')
+@section('title', 'Tambah data montir')
 @section('content')
     <div class="w-full px-6 py-6 mx-auto">
         @if ($errors->any())

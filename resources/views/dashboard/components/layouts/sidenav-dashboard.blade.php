@@ -32,7 +32,7 @@
                     {{ request()->segment(1) == 'users' ? 'py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors' : '' }}"
                         href="/users">
                         <div
-                            class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500 bg-center stroke-0 text-center xl:p-2.5">
+                            class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tl from-red-600 to-rose-400  bg-center stroke-0 text-center xl:p-2.5">
                             <i class="fas fa-users text-white"></i>
                         </div>
                         <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Data Pelanggan</span>
@@ -40,10 +40,11 @@
                 </li>
 
                 <li class="mt-0.5 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
+                    {{ request()->segment(1) == 'orders' ? 'py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors' : '' }}"
                         href="{{ route('orders.index') }}">
                         <div
-                            class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500  bg-center stroke-0 text-center xl:p-2.5">
+                            class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tl from-red-600 to-rose-400   bg-center stroke-0 text-center xl:p-2.5">
                             <i class="fas fa-shopping-cart text-white"></i>
                         </div>
                         <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Data Order</span>
@@ -52,47 +53,36 @@
 
                 <li class="mt-0.5 w-full">
                     <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
-                    "
-                        href="#">
+                    {{ request()->segment(1) == 'motors' ? 'py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors' : '' }}"
+                        href="{{ route('motors.index') }}">
                         <div
-                            class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500  bg-center stroke-0 text-center xl:p-2.5">
+                            class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tl from-red-600 to-rose-400   bg-center stroke-0 text-center xl:p-2.5">
                             <i class="fas fa-motorcycle text-white"></i>
                         </div>
                         <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Data Motor</span>
                     </a>
                 </li>
-
-                <li class="mt-0.5 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
-                        href="#">
-                        <div
-                            class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500 bg-center stroke-0 text-center xl:p-2.5">
-                            <i class="fas fa-wrench text-white"></i>
-                        </div>
-                        <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Data Service</span>
-                    </a>
-                </li>
-
                 <li class="mt-0.5 w-full">
                     <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
                     {{ request()->segment(1) == 'montirs' ? 'py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors' : '' }}"
                         href="/montirs">
                         <div
-                            class="bg-gradient-to-tl from-purple-700 to-pink-500 shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
+                            class="bg-gradient-to-tl from-red-600 to-rose-400  shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-white bg-center stroke-0 text-center xl:p-2.5">
                             <i class="fa fa-user-circle-o text-white"></i>
                         </div>
                         <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Data Montir</span>
                     </a>
                 </li>
                 <li class="mt-0.5 w-full">
-                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
-                        href="../pages/tables.html">
+                    <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors
+                    {{ request()->segment(1) == 'riwayats' ? 'py-2.7 shadow-soft-xl text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap rounded-lg bg-white px-4 font-semibold text-slate-700 transition-colors' : '' }}"
+                        href="{{ route('riwayats.index') }}">
                         <div
-                            class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500  bg-center stroke-0 text-center xl:p-2.5">
+                            class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tl from-red-600 to-rose-400   bg-center stroke-0 text-center xl:p-2.5">
                             <i class="fa fa-money text-white"></i>
                         </div>
                         <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Riwayat
-                            Transaksi</span>
+                            Order</span>
                     </a>
                 </li>
                 <li class="w-full mt-4">
@@ -104,7 +94,7 @@
                     <a class="py-2.7 text-sm ease-nav-brand my-0 mx-4 flex items-center whitespace-nowrap px-4 transition-colors"
                         href="/">
                         <div
-                            class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tl from-purple-700 to-pink-500 bg-center stroke-0 text-center xl:p-2.5">
+                            class="shadow-soft-2xl mr-2 flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-tl from-red-600 to-rose-400  bg-center stroke-0 text-center xl:p-2.5">
                             <i class="fas fa-th text-white"></i>
                         </div>
                         <span class="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">Landing
@@ -118,7 +108,7 @@
             <!-- load phantom colors for card after: -->
 
             <!-- pro btn  -->
-            <a class="inline-block w-full px-6 py-3 my-4 font-bold text-center text-white uppercase align-middle transition-all ease-in border-0 rounded-lg select-none shadow-soft-md bg-150 bg-x-25 leading-pro text-xs bg-gradient-to-tl from-purple-700 to-pink-500 hover:shadow-soft-2xl hover:scale-102"
+            <a class="inline-block w-full px-6 py-3 my-4 font-bold text-center text-white uppercase align-middle transition-all ease-in border-0 rounded-lg select-none shadow-soft-md bg-150 bg-x-25 leading-pro text-xs bg-gradient-to-tl from-red-600 to-rose-400  hover:shadow-soft-2xl hover:scale-102"
                 href="/logout">Log out</a>
         </div>
 

@@ -10,14 +10,13 @@
         @endif
         <div
             class="relative flex flex-col w-full min-w-0 mb-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-            <div class="p-6 pb-0 mb-0 bg-white rounded-t-2xl flex justify-between">
+            <div class="p-6 pb-0 mb-0 bg-white rounded-t-2xl border-b border-gray-200 flex justify-between">
                 <h6>Tabel Montir</h6>
                 <button type="button"
                     class="mr-3 inline-block px-4 py-2 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"><a
                         href="{{ route('montirs.create') }}">Tambah
                         Data</a></button>
             </div>
-
             <div class="flex-auto px-0 pt-0 pb-2">
                 <div class="p-0 overflow-x-auto">
                     <table class="items-center w-full mb-0 align-top border-gray-200 text-slate-500">

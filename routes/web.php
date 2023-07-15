@@ -7,6 +7,7 @@ use App\Http\Controllers\MontirController;
 use App\Http\Controllers\MotorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\RiwayatController;
 use App\Http\Controllers\ServiceController;
 use App\Models\Service;
 use Illuminate\Support\Facades\Route;
@@ -74,16 +75,10 @@ Route::middleware(['auth'])->group(function () {
 
     // CRUD USER
     Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    Route::get(
-        '/users/create',
-        [UserController::class, 'create']
-    )->name('users.create');
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
     Route::post('/users', [UserController::class, 'store'])->name('users.store');
     Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::put(
-        '/users/{user}',
-        [UserController::class, 'update']
-    )->name('users.update');
+    Route::put('/users/{user}', [UserController::class, 'update'])->name('users.update');
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
     //CRUD ORDER
@@ -92,10 +87,16 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/riwayat.home', [OrderController::class, 'riwayathome'])->name('riwayat.home');
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/detail/{id}', [OrderController::class, 'detail'])->name('orders.detail');
-    Route::get('/acc-order/{id}', [OrderController::class, 'confirm'])->name('orders.confirm');
+    Route::get('/confirm-order/{id}', [OrderController::class, 'confirm'])->name('orders.confirm');
     Route::get('/progress-order/{id}', [OrderController::class, 'progress'])->name('orders.progress');
+    Route::get('/close-order/{id}', [OrderController::class, 'close'])->name('orders.close');
+
+
+    //RIWAYAT Controller
+    Route::get('/riwayats', [RiwayatController::class, 'index'])->name('riwayats.index');
 
     //CRUD MOTOR
+    Route::get('/motors', [MotorController::class, 'index'])->name('motors.index');
     Route::get('/motor.user', [MotorController::class, 'viewmotoruser'])->name('motors.home');
 
     //CRUD SERVICE
