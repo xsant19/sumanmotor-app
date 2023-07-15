@@ -40,7 +40,8 @@
                         <tbody>
                             @foreach ($montirs as $montir)
                                 <tr>
-                                    <td class="align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                    <td
+                                        class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                         <div class="flex px-2 py-1">
                                             <div>
                                                 <h6 class="ml-2 p-2 mb-0 leading-normal text-sm">{{ $montir->nama }}</h6>

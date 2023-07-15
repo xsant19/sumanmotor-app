@@ -68,7 +68,7 @@
                                         <div>
                                             <div>
                                                 <button class="text-green-500 hover:text-blue-700 mr-2"
-                                                    onclick="window.location.href = '{{ route('orders.confirm', $order->id) }}'">
+                                                    onclick="window.location.href = '{{ route('orders.detail', $order->id) }}'">
                                                     <i class="fas fa-eye"></i>
                                                 </button>
                                                 <button class="text-red-500 hover:text-blue-700 mr-2"

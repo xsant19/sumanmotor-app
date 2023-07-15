@@ -7,6 +7,8 @@ use App\Http\Controllers\MontirController;
 use App\Http\Controllers\MotorController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ServiceController;
+use App\Models\Service;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -89,12 +91,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
     Route::get('/riwayat.home', [OrderController::class, 'riwayathome'])->name('riwayat.home');
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/detail/{id}', [OrderController::class, 'detail'])->name('orders.detail');
     Route::get('/acc-order/{id}', [OrderController::class, 'confirm'])->name('orders.confirm');
+    Route::get('/progress-order/{id}', [OrderController::class, 'progress'])->name('orders.progress');
 
     //CRUD MOTOR
     Route::get('/motor.user', [MotorController::class, 'viewmotoruser'])->name('motors.home');
 
     //CRUD SERVICE
-
-
+    Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
+    Route::put('/services/{service}', [ServiceController::class, 'update'])->name('services.update');
 });

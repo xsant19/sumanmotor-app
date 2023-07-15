@@ -28,4 +28,9 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function montir(): BelongsTo
+    {
+        return $this->belongsTo(Montir::class);
+    }
 }

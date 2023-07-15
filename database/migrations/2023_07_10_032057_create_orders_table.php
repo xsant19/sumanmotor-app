@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('no_order');
             $table->string('no_antri', 30);
-            $table->dateTime('tanggal_order')->default(now('+8'));
+            $table->dateTime('tanggal_order');
             $table->text('kendala');
             $table->enum('status_order', ['Menunggu', 'Sedang Diproses', 'Selesai'])->default('Menunggu');
             $table->double('total_harga', 12)->default(0);
