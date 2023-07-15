@@ -14,8 +14,7 @@
             <h6>Tabel Riwayat</h6>
             <button type="button"
                 class="mr-3 inline-block px-4 py-2 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"><a
-                    href="#">Tambah
-                    Data</a></button>
+                    href="#">Cetak Laporan Bulanan</a></button>
         </div>
 
         <div class="flex-auto px-0 pt-0 pb-2">
@@ -80,7 +79,7 @@
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap shadow-transparent">
                                     <div>
-                                        <button class="text-blue-500 hover:text-green-700 mr-2">
+                                        <button class="text-green-500 hover:text-blue-700 mr-2">
                                             <i class="fas fa-edit"></i>
                                         </button>
                                         <button class="text-blue-500 hover:text-blue-700 mr-2">

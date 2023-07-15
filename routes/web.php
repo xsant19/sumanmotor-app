@@ -82,9 +82,9 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
 
     //CRUD ORDER
-    Route::get('/orders.user', [OrderController::class, 'createorderuser'])->name('orders.home');
+    Route::get('/orders/user', [OrderController::class, 'createorderuser'])->name('orders.home');
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
-    Route::get('/riwayat.home', [OrderController::class, 'riwayathome'])->name('riwayat.home');
+    Route::get('/riwayat/home', [OrderController::class, 'riwayathome'])->name('riwayat.home');
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/detail/{id}', [OrderController::class, 'detail'])->name('orders.detail');
     Route::get('/confirm-order/{id}', [OrderController::class, 'confirm'])->name('orders.confirm');
@@ -97,7 +97,7 @@ Route::middleware(['auth'])->group(function () {
 
     //CRUD MOTOR
     Route::get('/motors', [MotorController::class, 'index'])->name('motors.index');
-    Route::get('/motor.user', [MotorController::class, 'viewmotoruser'])->name('motors.home');
+    Route::get('/motor/user', [MotorController::class, 'viewmotoruser'])->name('motors.home');
 
     //CRUD SERVICE
     Route::post('/services', [ServiceController::class, 'store'])->name('services.store');
