@@ -117,7 +117,7 @@
                                             {{ $service->deskripsi }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ $service->harga_service }}
+                                            {{ number_format($service->harga_service, 0, '', '.') }}
                                         </td>
                                         <td class="px-6 py-4">
                                             <button type="button" class="text-green-500 hover:text-blue-700 mr-2"
@@ -267,7 +267,8 @@
                                             Service</label>
                                         <input type="number" id="harga_service" name="harga_service"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Harga Service" value="{{ $service->harga_service }}">
+                                            placeholder="Harga Service"
+                                            value="{{ number_format($service->harga_service, 0, '', '.') }}">
                                     </div>
                                 </div>
                                 <div class="mb-6">

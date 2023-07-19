@@ -39,12 +39,6 @@ Route::get('/tentang-kami', [LandingPageController::class, 'tentangkami'])->name
 Route::get('/test', [LandingPageController::class, 'testdashboard'])->name('test');
 
 
-// Route::get('/login', function () {
-//     return view('home.components.pages.login-home');
-// })->name('login.utama');
-
-
-
 // LOGIN SISTEM & LOGOUT SISTEM
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'authenticating'])->name('auth')->middleware('guest');
@@ -82,6 +76,7 @@ Route::middleware(['auth'])->group(function () {
     //CRUD ORDER
     Route::get('/orders/user', [OrderController::class, 'createorderuser'])->name('orders.home');
     Route::get('/orders/user/motor/{id}', [OrderController::class, 'createOrderUserMotor'])->name('orders.motor');
+    Route::post('/orders/store/{id}', [OrderController::class, 'storeOrderUser'])->name('orders.user');
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/detail/{id}', [OrderController::class, 'detail'])->name('orders.detail');
@@ -93,6 +88,8 @@ Route::middleware(['auth'])->group(function () {
 
     //RIWAYAT Controller
     Route::get('/riwayats', [RiwayatController::class, 'index'])->name('riwayats.index');
+    Route::get('/riwayats/{id}', [RiwayatController::class, 'view'])->name('riwayats.view');
+    Route::get('/riwayats/user/{id}', [RiwayatController::class, 'viewUser'])->name('riwayats.view.user');
     Route::get('/export-order/{id}', [RiwayatController::class, 'exportPdf'])->name('orders.export');
     Route::get('/riwayat/home', [RiwayatController::class, 'riwayatTransaksiByUserDashboard'])->name('riwayat.byuser');
 

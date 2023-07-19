@@ -12,11 +12,11 @@ class DashboardController extends Controller
 {
     public function index(): View
     {
+        // $users = User::count();
         $users = User::where('id', '!=', '1')->count();
         $motors = Motor::count();
         $orders = Order::where('status_order', '!=', 'Selesai')->count();
         $TotalTransaksi = Order::where('status_order', '=', 'Selesai')->sum('total_harga');
-        // $users = User::count();
         return view('dashboard.components.pages.index-dashboard', compact('users', 'motors', 'orders', 'TotalTransaksi'));
     }
     public function pelanggan(): View

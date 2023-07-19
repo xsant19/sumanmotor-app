@@ -19,6 +19,7 @@
                         <tr>
                             <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Nomor</th>
                             <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Nama Motor</th>
+                            <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Merk Motor</th>
                             <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Jenis Motor</th>
                             <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">No Polisi</th>
                             <th class="px-6 py-3 text-left text-sm font-medium text-gray-700">Aksi</th>
@@ -29,12 +30,10 @@
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $loop->iteration }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $motor->nama }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap">{{ $motor->merk_motor }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $motor->jenis_motor }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">{{ $motor->no_polisi }}</td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <button class="text-blue-500 hover:text-blue-700 mr-2">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
                                     <button class="text-green-500 hover:text-blue-700 mr-2"><a
                                             href="{{ route('orders.motor', $motor->id) }}"> <i
                                                 class="fas fa-shopping-cart"></i></a>

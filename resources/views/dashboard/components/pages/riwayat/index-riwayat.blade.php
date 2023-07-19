@@ -68,9 +68,9 @@
                                     </div>
                                 </td>
                                 <td class="align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                    <div class="flex px-2 py-1">
+                                    <div class="px-1 py-1">
                                         <div>
-                                            <h6 class="mb-0 font-semibold leading-tight text-xs">
+                                            <h6 class="mb-0 text-center font-semibold leading-tight text-xs">
                                                 {{ number_format($order->total_harga, 0, '', '.') }}
                                             </h6>
                                         </div>
@@ -79,20 +79,21 @@
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap shadow-transparent">
                                     <div></div>
-                                    <button class="text-blue-500 hover:text-blue-700 mr-2">
-                                        <i class="fas fa-eye"></i>
-                                    </button>
+                                    <a href="{{ route('riwayats.view', $order->id) }}">
+                                        <button class="text-blue-500 hover:text-blue-700 mr-2">
+                                            <i class="fas fa-eye"></i>
+                                        </button></a>
                                     <form action="{{ route('orders.destroy', $order->id) }}" method="POST"
                                         class="inline-block">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="text-red-500"> <i
+                                        <button type="submit" class="text-red-500 mr-2"> <i
                                                 class="fas fa-trash"></i></button>
                                     </form>
-                                    <button class="text-gray-500 hover:text-blue-700 mr-2"><a
-                                            href="{{ route('orders.export', $order->id) }}"> <i
-                                                class="fas fa-print"></i></a>
-                                    </button>
+                                    <a href="{{ route('orders.export', $order->id) }}"><button
+                                            class="text-gray-500 hover:text-blue-700 mr-2">
+                                            <i class="fas fa-print"></i>
+                                        </button></a>
                         @endforeach
                     </tbody>
                 </table>

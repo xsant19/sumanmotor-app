@@ -75,9 +75,30 @@ class OrderController extends Controller
     public function createOrderUserMotor($id)
     {
         $motor =  Motor::find($id);
-        // $order =  Order::find($id);
-        // $motor = Motor::where('user_id', $order->user_id)->get();
         return view('home.components.pages.motor-order-home', compact('motor'));
+    }
+
+    public function storeOrderUser($id, Request $request)
+    {
+        $motor =  Motor::find($id);
+        //Acuan tanggal order : Jika order hari ini setelah jam 6 sore saat ini dihitung hari ini , jika order sebelum jam 6 sore maka dihitung orderan kemarin
+        $date_start = Carbon::now('+8')->format('H') > 18 ? Carbon::now('+8')->hour(18)->minute(0)->second(0) : Carbon::now('+8')->hour(18)->minute(0)->second(0)->subDay();
+        $order_count = Order::where('tanggal_order', '>=', $date_start->format('Y-m-d H:i:s'))->count();
+
+        // Membuat no order random yang diawali huruf SMN ditambah 3 random string  ditambah Tanggal,jam,menit dan detik
+        $order = new Order();
+        $randomString = Str::random(3);
+        $order->no_order = 'SMN' . strtoupper($randomString) . Carbon::now()->format('dHis');
+
+        $order->no_antri = $order_count + 1;
+        $order->tanggal_order = Carbon::now('+8');
+        $order->motor_id = $motor->id;
+        $order->kendala = $request['kendala'];
+        $order->user_id = Auth::user()->id;
+        $order->save();
+
+        return redirect()->route('riwayat.byuser')
+            ->with('success', 'Data Order Berhasil dibuat , silahkan tunggu');
     }
 
     public function store(Request $request)

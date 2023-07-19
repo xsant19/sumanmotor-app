@@ -16,6 +16,19 @@ class RiwayatController extends Controller
         return view('dashboard.components.pages.riwayat.index-riwayat', compact('orders'));
     }
 
+
+    public function view($id, Request $request)
+    {
+        $order =  Order::find($id);
+        return view('dashboard.components.pages.riwayat.detail-riwayat', compact('order'));
+    }
+
+    public function viewUser($id, Request $request)
+    {
+        $order =  Order::find($id);
+        return view('home.components.pages.detail-riwayat-home', compact('order'));
+    }
+
     public function riwayatTransaksiByUserDashboard(Request $request)
     {
         $search = @$request['search'];

@@ -26,6 +26,8 @@ class MotorController extends Controller
         return view('dashboard.components.pages.motor.index-motor', compact('motors', 'keyword'));
     }
 
+
+
     public function viewmotoruser(Request $request)
     {
         // dd($request->all());
@@ -40,8 +42,8 @@ class MotorController extends Controller
         return view('home.components.pages.motor-home', compact('motors'));
     }
 
-    public function view($id)
 
+    public function view($id)
     {
         $motor =  Motor::find($id);
         return view('dashboard.components.pages.motor.detail-motor', compact('motor'));

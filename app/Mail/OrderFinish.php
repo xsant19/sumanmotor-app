@@ -30,7 +30,7 @@ class OrderFinish extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Order Finish',
+            subject: 'Order Selesai',
         );
     }
 

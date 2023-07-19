@@ -2,7 +2,7 @@
 @section('content_dashboard')
     <div class="w-full max-w-md mx-auto">
         <h2 class="text-2xl font-bold mb-4">Form Order Service Motor</h2>
-        <form action="{{ route('orders.store') }}" method="POST" id="orderForm"
+        <form action="{{ route('orders.user', ['id' => $motor->id]) }}" method="POST" id="orderForm"
             class="w-full max-w-md mx-auto shadow-md
             rounded px-8 pt-6 pb-8 mb-4 ">
             @csrf
@@ -40,9 +40,9 @@
                     id="kendala" name="kendala" placeholder="Masukkan Kendala Motor Anda" required></textarea>
             </div>
             <div class="flex items-center justify-between">
-                <button
-                    class="mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-red-600 to-red-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"
-                    type="button"><a href="{{ route('motors.home') }}">Batal</button></a>
+                <a href="{{ route('motors.home') }}"><button
+                        class="mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-red-600 to-red-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"
+                        type="button">Batal</button></a>
                 <button type="submit"
                     class=" inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white">Kirim</button>
             </div>

@@ -49,23 +49,23 @@
         data-collapse="sticky-navar" id="navbar-sticky">
         <ul class="mt-2 mb-4 flex flex-col gap-2 pb-2" data="menu">
             <li class="block p-1 font-sans text-sm font-normal leading-normal text-inherit antialiased">
-                <a class="flex items-center" href="#">
+                <a class="flex items-center" href="{{ route('halaman.utama') }}">
                     Beranda
                 </a>
             </li>
             <li class="block p-1 font-sans text-sm font-normal leading-normal text-inherit antialiased">
-                <a class="flex items-center" href="#">
+                <a class="flex items-center" href="{{ route('kontak') }}">
                     Kontak Kami
                 </a>
             </li>
             <li class="block p-1 font-sans text-sm font-normal leading-normal text-inherit antialiased">
-                <a class="flex items-center" href="#">
-                    FAQ
+                <a class="flex items-center" href="{{ route('tentang.kami') }}">
+                    Tentang Kami
                 </a>
             </li>
             <li class="block p-1 font-sans text-sm font-normal leading-normal text-inherit antialiased">
-                <a class="flex items-center" href="#">
-                    Tentang Kami
+                <a class="flex items-center" href="{{ route('faq') }}">
+                    FAQ
                 </a>
             </li>
             <button

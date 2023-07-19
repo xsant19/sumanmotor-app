@@ -91,7 +91,7 @@
 
 <body>
     <div class="header">
-        <h1>Suman Motor</h1>
+        <h1>Suman Motor Invoice</h1>
     </div>
     <div class="content">
         <p>Kepada Yth.,</p>

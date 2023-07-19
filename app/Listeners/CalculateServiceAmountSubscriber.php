@@ -9,6 +9,8 @@ use Illuminate\Events\Dispatcher;
 
 class CalculateServiceAmountSubscriber
 {
+
+    // Berfungsi untuk menghitung ulang total harga pada sebuah order berdasarkan perubahan yang terjadi pada harga layanan.
     public function recalculate($event)
     {
         $service = $event->service;
@@ -18,7 +20,6 @@ class CalculateServiceAmountSubscriber
 
         $order->total_harga = $grandtotal;
         $order->save();
-
     }
 
     /**
