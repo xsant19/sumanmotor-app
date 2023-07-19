@@ -13,10 +13,10 @@
                         <div class="flex flex-row -mx-3">
                             <div class="flex-none w-2/3 max-w-full px-3">
                                 <div>
-                                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">Jumlah Pelanggan
+                                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">Total Pelanggan
                                     </p>
                                     <h5 class="mb-0 font-bold">
-                                        $53,000
+                                        {{ $users }}
                                     </h5>
                                 </div>
                             </div>
@@ -41,8 +41,7 @@
                                     <p class="mb-0 font-sans font-semibold leading-normal text-sm">Total Motor
                                     </p>
                                     <h5 class="mb-0 font-bold">
-                                        2,300
-                                        <span class="leading-normal text-sm font-weight-bolder text-lime-500">+3%</span>
+                                        {{ $motors }}
                                     </h5>
                                 </div>
                             </div>
@@ -64,10 +63,9 @@
                         <div class="flex flex-row -mx-3">
                             <div class="flex-none w-2/3 max-w-full px-3">
                                 <div>
-                                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">New Clients</p>
+                                    <p class="mb-0 font-sans font-semibold leading-normal text-sm">Orderan Baru</p>
                                     <h5 class="mb-0 font-bold">
-                                        +3,462
-                                        <span class="leading-normal text-red-600 text-sm font-weight-bolder">-2%</span>
+                                        {{ $orders }}
                                     </h5>
                                 </div>
                             </div>
@@ -91,8 +89,7 @@
                                 <div>
                                     <p class="mb-0 font-sans font-semibold leading-normal text-sm">Total Transaksi</p>
                                     <h5 class="mb-0 font-bold">
-                                        $103,430
-                                        <span class="leading-normal text-sm font-weight-bolder text-lime-500">+5%</span>
+                                        {{ number_format($TotalTransaksi, 0, '', '.') }}
                                     </h5>
                                 </div>
                             </div>

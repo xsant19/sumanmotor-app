@@ -1,7 +1,7 @@
 <footer class="w-full bg-white p-8 relative">
     <div
         class="flex flex-row flex-wrap items-center justify-center gap-y-6 gap-x-12 bg-white text-center md:justify-between">
-        <img src="./assets/img/logo.png" alt="logo-ct" class="w-10" />
+        <img src="{{ asset('assets/img/logo.png') }}" alt="logo-ct" class="w-10" />
         <ul class="flex flex-wrap items-center gap-y-2 gap-x-8">
             <li>
                 <a href="#"

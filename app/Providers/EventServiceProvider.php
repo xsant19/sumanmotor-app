@@ -19,6 +19,9 @@ class EventServiceProvider extends ServiceProvider
         Registered::class => [
             SendEmailVerificationNotification::class,
         ],
+        \App\Events\OrderUpdated::class => [
+            \App\Listeners\SendMailOrderFinish::class
+        ]
     ];
 
     /**

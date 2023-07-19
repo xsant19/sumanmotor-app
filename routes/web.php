@@ -36,34 +36,32 @@ Route::get('/', function () {
 Route::get('/kontak-kami', [LandingPageController::class, 'kontak'])->name('kontak');
 Route::get('/faq', [LandingPageController::class, 'faq'])->name('faq');
 Route::get('/tentang-kami', [LandingPageController::class, 'tentangkami'])->name('tentang.kami');
+Route::get('/test', [LandingPageController::class, 'testdashboard'])->name('test');
 
 
 // Route::get('/login', function () {
 //     return view('home.components.pages.login-home');
 // })->name('login.utama');
 
-Route::get('/register', function () {
-    return view('home.components.pages.register-home');
-});
 
-// LOGIN SISTEM
+
+// LOGIN SISTEM & LOGOUT SISTEM
 Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
 Route::post('/login', [AuthController::class, 'authenticating'])->name('auth')->middleware('guest');
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth')->name('logout');
 
-
+//REGISTER SISTEM
+Route::get('/register', function () {
+    return view('home.components.pages.register-home');
+});
 Route::get('/register', [AuthController::class, 'register'])->name('register')->middleware('guest');
 Route::post('/register', [AuthController::class, 'store'])->middleware('guest');
-
-// CRUD SERVICE
 
 
 Route::middleware(['auth'])->group(function () {
     //DASHBOARD SISTEM
     Route::get('/dashboard-admin', [DashboardController::class, 'index'])->name('dashboard.admin');
     Route::get('/dashboard-pelanggan', [DashboardController::class, 'pelanggan'])->name('dashboard.pelanggan');
-
-    //LOGIN,LOGOUT DAN REGISTER
 
     //CRUD MONTIR
     Route::get('/montirs', [MontirController::class, 'index'])->name('montirs.index');
@@ -83,21 +81,29 @@ Route::middleware(['auth'])->group(function () {
 
     //CRUD ORDER
     Route::get('/orders/user', [OrderController::class, 'createorderuser'])->name('orders.home');
+    Route::get('/orders/user/motor/{id}', [OrderController::class, 'createOrderUserMotor'])->name('orders.motor');
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
-    Route::get('/riwayat/home', [OrderController::class, 'riwayathome'])->name('riwayat.home');
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/detail/{id}', [OrderController::class, 'detail'])->name('orders.detail');
-    Route::get('/confirm-order/{id}', [OrderController::class, 'confirm'])->name('orders.confirm');
+    Route::post('/orders/edit/{id}', [OrderController::class, 'edit'])->name('orders.edit');
+    Route::post('/confirm-order/{id}', [OrderController::class, 'confirm'])->name('orders.confirm');
     Route::get('/progress-order/{id}', [OrderController::class, 'progress'])->name('orders.progress');
     Route::get('/close-order/{id}', [OrderController::class, 'close'])->name('orders.close');
-
+    Route::delete('/orders/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
 
     //RIWAYAT Controller
     Route::get('/riwayats', [RiwayatController::class, 'index'])->name('riwayats.index');
+    Route::get('/export-order/{id}', [RiwayatController::class, 'exportPdf'])->name('orders.export');
+    Route::get('/riwayat/home', [RiwayatController::class, 'riwayatTransaksiByUserDashboard'])->name('riwayat.byuser');
 
     //CRUD MOTOR
     Route::get('/motors', [MotorController::class, 'index'])->name('motors.index');
-    Route::get('/motor/user', [MotorController::class, 'viewmotoruser'])->name('motors.home');
+    Route::get('/motors/create', [MotorController::class, 'create'])->name('motors.create');
+    Route::post('/motors', [MotorController::class, 'store'])->name('motors.store');
+    Route::get('/motors/{motor}/edit', [MotorController::class, 'edit'])->name('motors.edit');
+    Route::put('/motors/{motor}', [MotorController::class, 'update'])->name('motors.update');
+    Route::get('/motors/user', [MotorController::class, 'viewmotoruser'])->name('motors.home');
+    Route::delete('/motors/{motor}', [MotorController::class, 'destroy'])->name('motors.destroy');
 
     //CRUD SERVICE
     Route::post('/services', [ServiceController::class, 'store'])->name('services.store');

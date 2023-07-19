@@ -11,7 +11,7 @@
     <div
         class="relative flex flex-col w-full min-w-0 mb-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
         <div class="p-6 pb-0 mb-0 bg-white rounded-t-2xl flex justify-between">
-            <h6>Tabel Riwayat</h6>
+            <h6>Tabel Riwayat Transaksi</h6>
             <button type="button"
                 class="mr-3 inline-block px-4 py-2 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"><a
                     href="#">Cetak Laporan Bulanan</a></button>
@@ -71,31 +71,34 @@
                                     <div class="flex px-2 py-1">
                                         <div>
                                             <h6 class="mb-0 font-semibold leading-tight text-xs">
-                                                {{ $order->total_harga }}
+                                                {{ number_format($order->total_harga, 0, '', '.') }}
                                             </h6>
                                         </div>
                                     </div>
                                 </td>
                                 <td
                                     class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap shadow-transparent">
-                                    <div>
-                                        <button class="text-green-500 hover:text-blue-700 mr-2">
-                                            <i class="fas fa-edit"></i>
-                                        </button>
-                                        <button class="text-blue-500 hover:text-blue-700 mr-2">
-                                            <i class="fas fa-eye"></i>
-                                        </button>
-                                        <button class="text-blue-500 hover:text-blue-700 mr-2">
-                                            <i class="fas fa-print"></i>
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+                                    <div></div>
+                                    <button class="text-blue-500 hover:text-blue-700 mr-2">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <form action="{{ route('orders.destroy', $order->id) }}" method="POST"
+                                        class="inline-block">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="text-red-500"> <i
+                                                class="fas fa-trash"></i></button>
+                                    </form>
+                                    <button class="text-gray-500 hover:text-blue-700 mr-2"><a
+                                            href="{{ route('orders.export', $order->id) }}"> <i
+                                                class="fas fa-print"></i></a>
+                                    </button>
                         @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+    <div class="mt-6"> {{ $orders->links() }}</div>
 </div>
 @endsection

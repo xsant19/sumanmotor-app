@@ -2,152 +2,158 @@
 @section('title', 'Detail Order')
 @section('content')
     <div class="w-full px-6 py-6 mx-auto">
+        @if ($message = Session::get('success'))
+            <div
+                class="relative p-2 mb-3 text-sm text-white border border-solid rounded-lg bg-gradient-to-tl from-green-600 to-lime-400 border-lime-300">
+                {{ $message }}
+            </div>
+        @endif
         <div
             class="relative flex flex-col w-full min-w-0 mb-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
             <div
                 class="p-6 pb-0 mb-0 bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                 <h2 class="text-xl font-bold mb-4">Detail Order</h2>
-                <form action="">
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label for="no_order" class="block text-sm font-medium text-gray-700">No Order</label>
-                            <input type="text" id="no_order" name="no_order"
-                                class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                value="{{ $order->no_order }}" disabled>
-                        </div>
-                        <div>
-                            <label for="nomor_antri" class="block text-sm font-medium text-gray-700">No Antri</label>
-                            <input type="text" id="nomor_antri" name="nomor_antri"
-                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                value="{{ $order->no_antri }}" disabled>
-                        </div>
-                    </div>
-                    <div class="mb-4 mt-4">
-                        <label for="tanggal_order" class="block text-sm font-medium text-gray-700">Tanggal Order</label>
-                        <input type="text" id="tanggal_order" name="tanggal_order"
-                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            value="{{ $order->tanggal_order }}" disabled>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div>
-                            <label for="nama" class="block text-sm font-medium text-gray-700">Nama Pemilik</label>
-                            <input type="text" id="nama" name="nama"
-                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                value="{{ $order->user->nama }}" disabled>
-                        </div>
-                        <div>
-                            <label for="nama" class="block text-sm font-medium text-gray-700">Motor</label>
-                            <input type="text" id="motor" name="motor"
-                                class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                                value="{{ $order->motor->nama }}" disabled>
-                        </div>
-                    </div>
-                    <div class="mb-4 mt-4">
-                        <label for="tanggal_order" class="block text-sm font-medium text-gray-700">No Polisi</label>
-                        <input type="text" id="tanggal_order" name="tanggal_order"
+                @if ($order->status_order == 'Menunggu')
+                    <form action="{{ route('orders.confirm', ['id' => $order->id]) }}" method="POST">
+                    @else
+                        <form action="{{ route('orders.edit', ['id' => $order->id]) }}" method="POST">
+                @endif
+                @csrf
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="no_order" class="block text-sm font-medium text-gray-700">No Order</label>
+                        <input type="text" id="no_order" name="no_order"
                             class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                            value="{{ $order->motor->no_polisi }}" disabled>
-                    </div <p class="text-gray-500 mt-4">Kendala:</p>
-                    <textarea name="kendala" class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" rows="4"
-                        @disabled($order->status_order == 'Menunggu')>{{ $order->kendala }}</textarea>
-                    <div class="mb-4 mt-4">
-                        <label for="nama_montir" class="block text-sm font-medium text-gray-700">Pilih Montir</label>
-                        @foreach ($montirs as $montir)
-                            <select id="nama_montir" name="nama_montir"
-                                class="mb-4 mt-4 shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                <option value='{{ $montir->id }}'>{{ $montir->nama }}</option>
-                            </select>
-                        @endforeach
+                            value="{{ $order->no_order }}" disabled>
                     </div>
-                    @if ($order->status_order != 'menunggu')
-                        <p class="text-gray-500 mt-4">Service</p>
-
-                        {{-- Modal Tambah Data Service --}}
+                    <div>
+                        <label for="nomor_antri" class="block text-sm font-medium text-gray-700">No Antri</label>
+                        <input type="text" id="nomor_antri" name="nomor_antri"
+                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            value="{{ $order->no_antri }}" disabled>
+                    </div>
+                </div>
+                <div class="mb-4 mt-4">
+                    <label for="tanggal_order" class="block text-sm font-medium text-gray-700">Tanggal Order</label>
+                    <input type="text" id="tanggal_order" name="tanggal_order"
+                        class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        value="{{ $order->tanggal_order }}" disabled>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label for="nama" class="block text-sm font-medium text-gray-700">Nama Pemilik</label>
+                        <input type="text" id="nama" name="nama"
+                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            value="{{ $order->user->nama }}" disabled>
+                    </div>
+                    <div>
+                        <label for="nama" class="block text-sm font-medium text-gray-700">Motor</label>
+                        <input type="text" id="motor" name="motor"
+                            class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            value="{{ $order->motor->nama }}" disabled>
+                    </div>
+                </div>
+                <div class="mb-4 mt-4">
+                    <label for="tanggal_order" class="block text-sm font-medium text-gray-700">No Polisi</label>
+                    <input type="text" id="tanggal_order" name="tanggal_order"
+                        class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                        value="{{ $order->motor->no_polisi }}" disabled>
+                </div>
+                <p class="text-gray-500 mt-4">Kendala:</p>
+                <textarea name="kendala" class="block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" rows="4"
+                    @disabled($order->status_order == 'Menunggu')>{{ $order->kendala }}</textarea>
+                <div class="mb-4 mt-4">
+                    <label for="nama_montir" class="block text-sm font-medium text-gray-700">Pilih Montir</label>
+                    <select id="nama_montir" name="montir_id"
+                        class="block px-6 py-2 shadow-sm sm:text-sm border-gray-300 rounded-md">
+                        @foreach ($montirs as $montir)
+                            <option value='{{ $montir->id }}' @selected($montir->id == $order->montir_id)>
+                                {{ $montir->nama }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                @if ($order->status_order != 'Menunggu')
+                    <p class="text-gray-500 font-semibold">Service</p>
+                    {{-- Modal Tambah Data Service --}}
+                    <div class="py-2">
                         <button data-modal-target="tambahserviceModal" data-modal-toggle="tambahserviceModal"
                             class="inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-gradient-to-tl from-green-600 to-lime-400 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs"
                             type="button">
                             Tambah Data Service
                         </button>
-                        {{-- TABEL DATA SERVICE --}}
-                        @if ($message = Session::get('success'))
-                            <div
-                                class="relative p-2 mb-3 text-sm text-white border border-solid rounded-lg bg-gradient-to-tl from-green-600 to-lime-400 border-lime-300">
-                                {{ $message }}
-                            </div>
-                        @endif
-                        <div class="relative overflow-x-auto">
-                            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                                <thead
-                                    class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th scope="col" class="px-6 py-3">
-                                            No
+                    </div>
+                    {{-- TABEL DATA SERVICE --}}
+                    <div class="relative overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+                            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3">
+                                        No
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Jenis Service
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Deskripsi
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Harga
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
+                                        Aksi
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($services as $service)
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <td class="px-6 py-4">
+                                            {{ $loop->iteration }}
+                                        <th scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {{ $service->jenis_service }}
                                         </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Jenis Service
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Deskripsi
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Harga
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Aksi
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($services as $service)
-                                        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                            <td class="px-6 py-4">
-                                                {{ $loop->iteration }}
-                                            <th scope="row"
-                                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                                {{ $service->jenis_service }}
-                                            </th>
-                                            <td class="px-6 py-4">
-                                                {{ $service->deskripsi }}
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                {{ $service->harga_service }}
-                                            </td>
-                                            <td class="px-6 py-4">
-                                                <button type="button" class="text-green-500 hover:text-blue-700 mr-2"
-                                                    data-modal-target="editserviceModal"
-                                                    data-modal-toggle="editserviceModal{{ $service->id }}">
-                                                    {{-- onclick="window.location.href = '{{ route('montirs.edit', $montir->id) }}'"> --}}
-                                                    <i class="fas fa-edit"></i>
-                                                </button>
-                                                {{-- <form action="{{ route('montirs.destroy', $montir->id) }}" method="POST"
+                                        <td class="px-6 py-4">
+                                            {{ $service->deskripsi }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {{ $service->harga_service }}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            <button type="button" class="text-green-500 hover:text-blue-700 mr-2"
+                                                data-modal-target="editserviceModal"
+                                                data-modal-toggle="editserviceModal{{ $service->id }}">
+                                                {{-- onclick="window.location.href = '{{ route('montirs.edit', $montir->id) }}'"> --}}
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            {{-- <form action="{{ route('montirs.destroy', $montir->id) }}" method="POST"
                                         class="inline-block">
                                         @csrf
                                         @method('DELETE') --}}
-                                                <button type="button" class="text-red-500"> <i
-                                                        class="fas fa-trash"></i></button>
-                                                {{-- </form> --}}
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                    @endif
-                    <div class="mt-6">
-                        @if ($order->status_order == 'Menunggu')
-                            <button type="button"
-                                class="mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"><a
-                                    href="{{ route('orders.confirm', ['id' => $order->id]) }}">Terima</a></button>
-                        @endif
-                        @if ($order->status_order == 'Sedang Diproses')
-                            <button type="button"
-                                class="mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"><a
-                                    href="{{ route('orders.confirm', ['id' => $order->id]) }}">Simpan</a></button>
-                        @endif
-                        <button type="button"
-                            class="mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-red-600 to-rose-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"><a
-                                href="{{ route('orders.index') }}">Kembali</button></a>
+                                            <button type="button" class="text-red-500"> <i
+                                                    class="fas fa-trash"></i></button>
+                                            {{-- </form> --}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
+                @endif
+                <div class="py-6">
+                    @if ($order->status_order == 'Menunggu')
+                        <button type="submit"
+                            class="mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white">
+                            Terima</button>
+                    @endif
+                    @if ($order->status_order == 'Sedang Diproses')
+                        <button type="submit"
+                            class="mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white">Simpan</button>
+                    @endif
+                    <button type="button"
+                        class="mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-red-600 to-rose-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"><a
+                            href="{{ route('orders.index') }}">Kembali</button></a>
+                </div>
                 </form>
             </div>
         </div>

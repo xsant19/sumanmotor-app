@@ -2,14 +2,16 @@
 
 namespace App\Models;
 
+use App\Events\OrderUpdated;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     protected $fillable = [
         'no_order',
         'no_antri',
@@ -18,6 +20,10 @@ class Order extends Model
         'kendala',
         'total_harga',
         'user_id',
+    ];
+
+    protected $dispatchesEvents = [
+        'updated' => OrderUpdated::class
     ];
 
     public function motor(): BelongsTo
@@ -34,7 +40,7 @@ class Order extends Model
     {
         return $this->belongsTo(Montir::class);
     }
-    
+
     public function services(): HasMany
     {
         return $this->hasMany(Service::class);

@@ -2,12 +2,12 @@
 @section('title', 'Tabel Order')
 @section('content')
     <div class="w-full px-6 py-6 mx-auto">
-        {{-- @if ($message = Session::get('success'))
+        @if ($message = Session::get('success'))
             <div
                 class="relative p-2 mb-3 text-sm text-white border border-solid rounded-lg bg-gradient-to-tl from-green-600 to-lime-400 border-lime-300">
                 {{ $message }}
             </div>
-        @endif --}}
+        @endif
         <div
             class="relative flex flex-col w-full min-w-0 mb-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
             <div class="p-6 pb-0 mb-0 bg-white rounded-t-2xl flex justify-between">
@@ -57,7 +57,7 @@
                                         </div>
                                     </td>
                                     <td
-                                        class="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                        class="p-2 align-middle text-left bg-transparent border-b whitespace-nowrap shadow-transparent">
                                         <p class="mb-0 font-semibold leading-tight text-xs">{{ $order->no_antri }}</p>
                                     </td>
                                     <td
@@ -76,19 +76,23 @@
                                         class="p-2 leading-normal text-left align-middle bg-transparent border-b text-sm whitespace-nowrap shadow-transparent">
                                         <div>
                                             <div>
-                                                <button class="text-green-500 hover:text-blue-700 mr-2"
-                                                    onclick="window.location.href = '{{ route('orders.close', $order->id) }}'">
-                                                    <i class="fas fa-check"></i>
-                                                </button>
                                                 <button class="text-blue-500 hover:text-blue-700 mr-2"
                                                     onclick="window.location.href = '{{ route('orders.detail', $order->id) }}'">
-                                                    <i class="fas fa-eye"></i>
+                                                    <i class="fas fa-edit"></i>
                                                 </button>
-                                                <button class="text-red-500 hover:text-blue-700 mr-2"
-                                                    onclick="window.location.href = '#'">
-                                                    <i class="fas fa-trash"></i>
-                                                </button>
-
+                                                <form action="{{ route('orders.destroy', $order->id) }}" method="POST"
+                                                    class="inline-block mr-2">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="text-red-500"> <i
+                                                            class="fas fa-trash"></i></button>
+                                                </form>
+                                                @if ($order->status_order != 'Menunggu')
+                                                    <button class="text-green-500 hover:text-blue-700 mr-2"
+                                                        onclick="window.location.href = '{{ route('orders.close', $order->id) }}'">
+                                                        <i class="fas fa-check"></i>
+                                                    </button>
+                                                @endif
                                             </div>
                                         </div>
                                     </td>
@@ -99,5 +103,6 @@
                 </div>
             </div>
         </div>
+        <div class="mt-6"> {{ $orders->links() }}</div>
     </div>
 @endsection

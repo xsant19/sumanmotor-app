@@ -2,14 +2,22 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Contracts\View\View;
+use App\Models\User;
+use App\Models\Motor;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
 
 class DashboardController extends Controller
 {
     public function index(): View
     {
-        return view('dashboard.components.pages.index-dashboard');
+        $users = User::where('id', '!=', '1')->count();
+        $motors = Motor::count();
+        $orders = Order::where('status_order', '!=', 'Selesai')->count();
+        $TotalTransaksi = Order::where('status_order', '=', 'Selesai')->sum('total_harga');
+        // $users = User::count();
+        return view('dashboard.components.pages.index-dashboard', compact('users', 'motors', 'orders', 'TotalTransaksi'));
     }
     public function pelanggan(): View
     {

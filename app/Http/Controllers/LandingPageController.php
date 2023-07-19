@@ -18,4 +18,9 @@ class LandingPageController extends Controller
     {
         return view('home.components.pages.tentangkami-home');
     }
+
+    public function testdashboard()
+    {
+        return view('dashboard.user.pages.index');
+    }
 }

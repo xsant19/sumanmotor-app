@@ -14,6 +14,7 @@
     <link href="{{ asset('assets/css/nucleo-icons.css') }}"rel="stylesheet" />
     <link href="{{ asset('assets/css/nucleo-svg.css') }}"rel="stylesheet" />
     <!-- Popper -->
+    <link href="https://cdn.datatables.net/1.13.5/css/dataTables.tailwindcss.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>
     <script src="https://unpkg.com/@popperjs/core@2"></script>

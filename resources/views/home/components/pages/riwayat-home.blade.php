@@ -2,7 +2,16 @@
 @section('content_dashboard')
     <div class="py-6">
         <div class="max-w-4xl mx-auto">
-            <h2 class="text-2xl font-bold mb-4">Riwayat Transaksi</h2>
+            <div class="flex flex-col md:flex-row items-center md:items-start justify-between pb-4">
+                <h2 class="text-2xl font-bold mb-1 md:mb-0">Riwayat Transaksi</h2>
+                <form action="" method="GET">
+                    <div class="flex mt-4 md:mt-0">
+                        <input type="text" placeholder="Cari No Order" name="search"
+                            class="rounded-l-lg py-2 px-4 bg-white border border-gray-300">
+                        <button class="bg-blue-500 hover:bg-blue-600 text-white rounded-r-lg py-2 px-4 ml-2">Cari</button>
+                    </div>
+                </form>
+            </div>
             <div class="bg-white rounded-md shadow overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-100">
@@ -27,9 +36,12 @@
                                         class="text-blue-500 hover:text-blue-700 mr-2">
                                         <i class="fas fa-eye"></i>
                                     </button>
-                                    <button class="text-green-500 hover:text-green-700">
-                                        <i class="fas fa-print"></i>
-                                    </button>
+                                    @if ($order->status_order == 'Selesai')
+                                        <button class="text-green-500 hover:text-green-700"><a
+                                                href="{{ route('orders.export', $order->id) }}"> <i
+                                                    class="fas fa-print"></i></a>
+                                        </button>
+                                    @endif
                                 </td>
                                 </td>
                             </tr>
@@ -37,6 +49,7 @@
                     </tbody>
                 </table>
             </div>
+            <div class="mt-6"> {{ $orders->links() }}</div>
         </div>
     </div>
 @endsection
