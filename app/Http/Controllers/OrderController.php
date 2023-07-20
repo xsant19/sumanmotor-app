@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Montir;
 use Carbon\Carbon;
+use App\Models\User;
 use App\Models\Motor;
 use App\Models\Order;
+use App\Models\Montir;
 use App\Models\Service;
-use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
@@ -20,6 +21,43 @@ class OrderController extends Controller
         $orders = Order::where('status_order', '!=', 'Selesai')->paginate(5);
         return view('dashboard.components.pages.order.index-order', compact('orders'));
     }
+
+    public function create()
+    {
+        // $order =  Order::all();
+        $montirs = Montir::all();
+        $motors = Motor::all();
+        $services = [];
+        $users = User::where('id', '!=', 1)->get();
+        // $motors = Motor::where('user_id', $users->user_id)->get();
+        return view('dashboard.components.pages.order.create-order', compact('users', 'montirs', 'motors', 'services'));
+    }
+
+    public function storeOrderAdmin(Request $request)
+    {
+        //Acuan tanggal order : Jika order hari ini setelah jam 6 sore saat ini dihitung hari ini , jika order sebelum jam 6 sore maka dihitung orderan kemarin
+        $date_start = Carbon::now('+8')->format('H') > 18 ? Carbon::now('+8')->hour(18)->minute(0)->second(0) : Carbon::now('+8')->hour(18)->minute(0)->second(0)->subDay();
+        $order_count = Order::where('tanggal_order', '>=', $date_start->format('Y-m-d H:i:s'))->count();
+
+        // Membuat no order random yang diawali huruf SMN ditambah 3 random string  ditambah Tanggal,jam,menit dan detik
+        $order = new Order();
+        $randomString = Str::random(3);
+        $order->no_order = 'SMN' . strtoupper($randomString) . Carbon::now()->format('dHis');
+
+        $order->no_antri = $order_count + 1;
+        $order->tanggal_order = Carbon::now('+8');
+        $order->motor_id = $request['motor_id'];
+        $order->kendala = $request['kendala'];
+        $order->status_order = 'Sedang Diproses';
+        $order->user_id = $request['user_id'];
+        $order->save();
+
+        $order->services()->createMany($request['service']);
+
+
+        return redirect()->route('orders.index')->with('success', 'Data Order Berhasil Ditambahkan');
+    }
+
 
     public function detail($id)
     {

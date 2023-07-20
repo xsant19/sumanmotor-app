@@ -1,4 +1,5 @@
 @extends('home.layout-home')
+@section('title', 'FAQ')
 @section('content')
     <section class="py-16">
         <div class="mx-auto max-w-7xl px-8 md:px-6">

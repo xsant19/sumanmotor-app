@@ -101,4 +101,12 @@ class MotorController extends Controller
         return redirect()->route('motors.index')
             ->with('success', 'Data Motor berhasil terhapus');
     }
+
+    public function getMotorByUser(Request $request)
+    {
+        $user_id = $request['user_id'];
+        $motors = Motor::where('user_id', $user_id)->get();
+
+        return response()->json($motors);
+    }
 }

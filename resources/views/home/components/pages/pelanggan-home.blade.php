@@ -1,4 +1,5 @@
 @extends('home.layout-user')
+@section('title', 'Dashboard Pelanggan')
 @section('content_dashboard')
     <h1 class="text-2xl font-semibold mb-4">Halo, {{ Auth::user()->nama }} Selamat Datang di Dashboard
         {{ Auth::user()->role->name }} </h1>

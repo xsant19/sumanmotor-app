@@ -3,9 +3,10 @@
 {{-- HEAD --}}
 @include('home.components.utils.head-home')
 {{-- BODY --}}
-<script type="text/javascript" src="../assets/floatingwhatsapp/jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="../assets/floatingwhatsapp/floating-wpp.min.js"></script>
-<link rel="stylesheet" href="../assets/floatingwhatsapp/floating-wpp.css">
+<script type="text/javascript" src="{{ asset('assets/floatingwhatsapp/jquery-3.3.1.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/floatingwhatsapp/floating-wpp.min.js') }}"></script>
+<script type="text/javascript" src="{{ asset('assets/floatingwhatsapp/floating-wpp.js') }}"></script>
+<link rel="stylesheet" href="{{ asset('assets/floatingwhatsapp/floating-wpp.css') }}">
 
 <body>
     @include('home.components.layouts.navbar-home')

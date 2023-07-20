@@ -7,13 +7,6 @@ use Illuminate\Http\Request;
 
 class ServiceController extends Controller
 {
-    // public function index()
-    // {
-    //     $services = Service::all();
-
-
-    // }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -40,5 +33,11 @@ class ServiceController extends Controller
 
         return redirect()->route('orders.detail', ['id' => $request->order_id])
             ->with('success', 'Data Services Berhasil Diperbarui');
+    }
+    public function destroy(Service $service)
+    {
+        $service->delete();
+        return redirect()->route('orders.detail')
+            ->with('success', 'Service deleted successfully');
     }
 }

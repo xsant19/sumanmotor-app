@@ -1,4 +1,5 @@
 @extends('home.layout-home')
+@section('title', 'Suman Motor')
 @section('content')
     <main>
         <div class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 75vh;">

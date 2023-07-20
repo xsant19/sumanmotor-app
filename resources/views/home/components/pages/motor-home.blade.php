@@ -1,4 +1,5 @@
 @extends('home.layout-user')
+@section('title', 'Motor Pelanggan')
 @section('content_dashboard')
     <div class="py-6">
         <div class="max-w-4xl mx-auto">

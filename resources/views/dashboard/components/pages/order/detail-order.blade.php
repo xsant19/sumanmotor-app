@@ -14,9 +14,9 @@
                 class="p-6 pb-0 mb-0 bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
                 <h2 class="text-xl font-bold mb-4">Detail Order</h2>
                 @if ($order->status_order == 'Menunggu')
-                    <form action="{{ route('orders.confirm', ['id' => $order->id]) }}" method="POST">
+                    <form action="{{ route('orders.confirm', ['id' => $order->id]) }}" method="POST" class="detail-form">
                     @else
-                        <form action="{{ route('orders.edit', ['id' => $order->id]) }}" method="POST">
+                        <form action="{{ route('orders.edit', ['id' => $order->id]) }}" method="POST" class="detail-form">
                 @endif
                 @csrf
                 <div class="grid grid-cols-2 gap-4">
@@ -72,6 +72,8 @@
                         @endforeach
                     </select>
                 </div>
+                </form>
+
                 @if ($order->status_order != 'Menunggu')
                     <p class="text-gray-500 font-semibold">Service</p>
                     {{-- Modal Tambah Data Service --}}
@@ -123,16 +125,15 @@
                                             <button type="button" class="text-green-500 hover:text-blue-700 mr-2"
                                                 data-modal-target="editserviceModal"
                                                 data-modal-toggle="editserviceModal{{ $service->id }}">
-                                                {{-- onclick="window.location.href = '{{ route('montirs.edit', $montir->id) }}'"> --}}
                                                 <i class="fas fa-edit"></i>
                                             </button>
-                                            {{-- <form action="{{ route('montirs.destroy', $montir->id) }}" method="POST"
-                                        class="inline-block">
-                                        @csrf
-                                        @method('DELETE') --}}
-                                            <button type="button" class="text-red-500"> <i
-                                                    class="fas fa-trash"></i></button>
-                                            {{-- </form> --}}
+                                            <form action="{{ route('services.destroy', $service->id) }}" method="POST"
+                                                class="inline-block">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-red-500"> <i
+                                                        class="fas fa-trash"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -142,19 +143,18 @@
                 @endif
                 <div class="py-6">
                     @if ($order->status_order == 'Menunggu')
-                        <button type="submit"
-                            class="mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white">
+                        <button type="button"
+                            class="confirm-btn mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white">
                             Terima</button>
                     @endif
                     @if ($order->status_order == 'Sedang Diproses')
-                        <button type="submit"
-                            class="mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white">Simpan</button>
+                        <button type="button"
+                            class="confirm-btn mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white">Simpan</button>
                     @endif
                     <button type="button"
                         class="mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-red-600 to-rose-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"><a
                             href="{{ route('orders.index') }}">Kembali</button></a>
                 </div>
-                </form>
             </div>
         </div>
         <!-- Modal Tambah Service -->
@@ -295,4 +295,12 @@
             </div>
     </div>
     @endforeach
+
+    <script>
+        $(document).ready(() => {
+            $('.confirm-btn').click(() => {
+                $('.detail-form').submit();
+            })
+        });
+    </script>
 @endsection

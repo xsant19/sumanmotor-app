@@ -7,6 +7,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js', 'app/**', 'resources/**'])
     <!--     Fonts and icons     -->
+    <link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
@@ -14,6 +15,8 @@
     <link href="{{ asset('assets/css/nucleo-icons.css') }}"rel="stylesheet" />
     <link href="{{ asset('assets/css/nucleo-svg.css') }}"rel="stylesheet" />
     <!-- Popper -->
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <link href="https://cdn.datatables.net/1.13.5/css/dataTables.tailwindcss.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.js"></script>

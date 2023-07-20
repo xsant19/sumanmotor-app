@@ -1,4 +1,5 @@
 @extends('home.layout-home')
+@section('title', 'Tentang Kami')
 @section('content')
     <!-- ====== about ====== -->
     <section class="py-16 bg-gray-100">

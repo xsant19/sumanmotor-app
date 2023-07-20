@@ -23,7 +23,11 @@
                     <i class="fas fa-history mr-2"></i>
                     Riwayat Transaksi
                 </a>
-                <a href="/logout" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
+                <a href="{{ route('user.index') }}" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
+                    <i class="fas fa-user-circle  mr-2"></i>
+                    Detail Akun
+                </a>
+                <a href="/logout" id="logout" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
                     <i class="fas fa-sign-out-alt mr-2"></i>
                     Logout
                 </a>
@@ -34,4 +38,24 @@
             @yield('content_dashboard')
         </section>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        $(document).on('click', '#logout', function(e) {
+            e.preventDefault();
+            var link = $(this).attr('href');
+            Swal.fire({
+                title: 'Apakah Anda Yakin Logout?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#67b04a',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location = link;
+                }
+            })
+        })
+    </script>
 @endsection

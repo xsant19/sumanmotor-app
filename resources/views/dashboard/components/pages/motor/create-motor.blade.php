@@ -23,51 +23,65 @@
                         href="{{ route('motors.index') }}">Kembali</a></button>
             </div>
 
-            <form action="{{ route('motors.store') }}" class="p-6 pb-3 mb-3 bg-white rounded-t-2xl" method="POST">
+            <form action="{{ route('motors.store') }}" class="p-6 pb-3 mb-3 bg-white rounded-t-2xl" method="POST"
+                autocomplete="on" novalidate>
                 @csrf
                 <div>
                     <label for="nama" class="block text-gray-700 font-medium mb-2">Nama Pemilik</label>
-                    <select id="jenis_motor" name="user_id" required
-                        class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+                    <select id="user_id" name="user_id" required data-placeholder="Pilih Nama Pemilik"
+                        data-allow-clear="false" title="Pilik Pemilik"
+                        class="selectpicker focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
                         @foreach ($users as $user)
                             <option value="{{ $user->id }}">{{ $user->nama }}</option>
                         @endforeach
                     </select>
+            </form>
+            <div class="grid mt-3 grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                    <label for="nama" class="block text-gray-700 font-medium mb-2">Nama Motor</label>
+                    <input type="text" id="nama" name="nama" required
+                        class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
                 </div>
-                <div class="grid mt-3 grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label for="nama" class="block text-gray-700 font-medium mb-2">Nama Motor</label>
-                        <input type="text" id="nama" name="nama" required
-                            class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
-                    </div>
 
-                    <div>
-                        <label for="merk_motor" class="block text-gray-700 font-medium mb-2">Merk Motor</label>
-                        <input type="text" id="merk_motor" name="merk_motor" required
-                            class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
-                    </div>
-
-                    <div>
-                        <label for="jenis_motor" class="block text-gray-700 font-medium mb-2">Jenis Motor</label>
-                        <select id="jenis_motor" name="jenis_motor" required
-                            class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
-                            <option value="Sport">Sport</option>
-                            <option value="Matic">Matic</option>
-                            <option value="Bebek">Bebek</option>
-                            <option value="Trail">Trail</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label for="no_polisi" class="block text-gray-700 font-medium mb-2">No Polisi</label>
-                        <input type="text" id="no_polisi" name="no_polisi" required
-                            class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
-                    </div>
-
+                <div>
+                    <label for="merk_motor" class="block text-gray-700 font-medium mb-2">Merk Motor</label>
+                    <input type="text" id="merk_motor" name="merk_motor" required
+                        class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
                 </div>
-                <button type="submit"
-                    class="mt-6 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white">Simpan</button>
+
+                <div>
+                    <label for="jenis_motor" class="block text-gray-700 font-medium mb-2">Jenis Motor</label>
+                    <select id="jenis_motor" name="jenis_motor" required
+                        class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+                        <option value="Sport">Sport</option>
+                        <option value="Matic">Matic</option>
+                        <option value="Bebek">Bebek</option>
+                        <option value="Trail">Trail</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="no_polisi" class="block text-gray-700 font-medium mb-2">No Polisi</label>
+                    <input type="text" id="no_polisi" name="no_polisi" required
+                        class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+                </div>
+
+            </div>
+            <button type="submit"
+                class="mt-6 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white">Simpan</button>
             </form>
         </div>
     </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.selectpicker').select2();
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.js-example-basic-multiple').select2();
+        });
+    </script>
+
 @endsection

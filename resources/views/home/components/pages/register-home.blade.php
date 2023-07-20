@@ -1,4 +1,5 @@
 @extends('home.layout-home')
+@section('title', 'Register Suman Motor')
 @section('content')
     {{-- <!-- component -->
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"> --}}
