@@ -66,6 +66,7 @@ Route::post('/register', [AuthController::class, 'store'])->middleware('guest');
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('/orders/store', [OrderController::class, 'storeOrderAdmin'])->name('orders.store');
+        // manggil nama route view wajib menambahkan admin.
     });
 
     //DASHBOARD SISTEM
@@ -111,6 +112,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/riwayats/user/{id}', [RiwayatController::class, 'viewUser'])->name('riwayats.view.user');
     Route::get('/export-order/{id}', [RiwayatController::class, 'exportPdf'])->name('orders.export');
     Route::get('/riwayat/home', [RiwayatController::class, 'riwayatTransaksiByUserDashboard'])->name('riwayat.byuser');
+
+    //Export Controller
+    Route::get('/cetak-laporan', [RiwayatController::class, 'export'])->name('cetak.laporan');
 
     //CRUD MOTOR
     Route::get('/motors', [MotorController::class, 'index'])->name('motors.index');

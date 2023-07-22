@@ -91,11 +91,6 @@ class OrderController extends Controller
         return redirect()->route('orders.index')->with('success', 'Data Order Berhasil Ditambahkan');;
     }
 
-    // public function progress($id)
-    // {
-    //     $order =  Order::find($id);
-    //     return view('dashboard.components.pages.order.progress-order', compact('order'));
-    // }
 
     public function close($id)
     {
