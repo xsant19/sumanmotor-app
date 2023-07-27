@@ -42,7 +42,7 @@ class RiwayatController extends Controller
         if (isset($search)) {
             $orders = $orders->where('no_order', 'LIKE', "%$search%");
         }
-        $orders = $orders->paginate(5);
+        $orders = $orders->orderBy('created_at', 'desc')->paginate(5);
         return view('home.components.pages.riwayat-home', compact('orders'));
     }
 

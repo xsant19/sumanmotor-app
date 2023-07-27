@@ -96,8 +96,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
-    Route::get('/orders/user', [OrderController::class, 'createorderuser'])->name('orders.home');
-    Route::get('/orders/user/motor/{id}', [OrderController::class, 'createOrderUserMotor'])->name('orders.motor');
+    Route::get('/orders/user', [OrderController::class, 'createOrderByUser'])->name('orders.home');
+    Route::get('/orders/user/motor/{id}', [OrderController::class, 'createOrderUserByMotor'])->name('orders.motor');
     Route::post('/orders/store/{id}', [OrderController::class, 'storeOrderUser'])->name('orders.user');
     Route::get('/orders/detail/{id}', [OrderController::class, 'detail'])->name('orders.detail');
     Route::post('/orders/edit/{id}', [OrderController::class, 'edit'])->name('orders.edit');
@@ -122,7 +122,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/motors', [MotorController::class, 'store'])->name('motors.store');
     Route::get('/motors/{motor}/edit', [MotorController::class, 'edit'])->name('motors.edit');
     Route::put('/motors/{motor}', [MotorController::class, 'update'])->name('motors.update');
-    Route::get('/motors/user', [MotorController::class, 'viewmotoruser'])->name('motors.home');
+    Route::get('/motors/user', [MotorController::class, 'viewMotorUser'])->name('motors.home');
     Route::delete('/motors/{motor}', [MotorController::class, 'destroy'])->name('motors.destroy');
 
     //CRUD SERVICE

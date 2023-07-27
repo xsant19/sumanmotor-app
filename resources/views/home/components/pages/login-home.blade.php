@@ -17,13 +17,6 @@
                                 {{ session('success') }}
                             </div>
                         @endif
-                        @if (session()->has('status'))
-                            <div
-                                class="font-regular relative mb-4 block w-full rounded-lg bg-gradient-to-tr from-green-600 to-green-400 p-4 text-base leading-5 text-white opacity-100">
-                                <i class="fas fa-exclamation mr-2"></i>
-                                {{ session('status') }}
-                            </div>
-                        @endif
                         @if ($errors->any())
                             @foreach ($errors->all() as $error)
                                 <div
@@ -32,6 +25,13 @@
                                     {{ $error }}
                                 </div>
                             @endforeach
+                        @endif
+                        @if (session()->has('status'))
+                            <div
+                                class="font-regular relative mb-4 block w-full rounded-lg bg-gradient-to-tr from-green-600 to-green-400 p-4 text-base leading-5 text-white opacity-100">
+                                <i class="fas fa-exclamation mr-2"></i>
+                                {{ session('status') }}
+                            </div>
                         @endif
                         <form method="POST" action="{{ route('auth') }}">
                             @csrf

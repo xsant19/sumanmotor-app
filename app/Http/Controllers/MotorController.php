@@ -28,16 +28,19 @@ class MotorController extends Controller
 
 
 
-    public function viewmotoruser(Request $request)
+    public function viewMotorUser(Request $request)
     {
-        // dd($request->all());
+        // Mendapatkan nilai dari parameter "search" dari request dan menyimpannya dalam variabel $search
         $search = @$request['search'];
+        // Mengambil data motor milik pengguna yang sedang login melalui relasi "motors" (diasumsikan ada relasi "motors" pada model User)
         $motors = Auth::user()->motors();
+        // Jika ada nilai pada variabel $search, maka dilakukan filtering data motor berdasarkan nilai tersebut menggunakan WHERE clause.
         if (isset($search)) {
             $motors = $motors->where('no_polisi', 'LIKE', "%$search%")
                 ->orWhere('nama', 'LIKE', "%$search%")->orWhere('merk_motor', 'LIKE', "%$search%")
                 ->orWhere('jenis_motor', 'LIKE', "%$search%");
         }
+        // Menggunakan pagination dengan menampilkan 5 data motor per halaman
         $motors = $motors->paginate(5);
         return view('home.components.pages.motor-home', compact('motors'));
     }

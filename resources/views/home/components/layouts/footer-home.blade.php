@@ -4,25 +4,25 @@
         <img src="{{ asset('assets/img/logo.png') }}" alt="logo-ct" class="w-10" />
         <ul class="flex flex-wrap items-center gap-y-2 gap-x-8">
             <li>
-                <a href="#"
+                <a href="{{ route('tentang.kami') }}"
                     class="block font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased transition-colors hover:text-red-500 focus:text-red-500">
                     Tentang Kami
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="{{ route('kontak') }}"
                     class="block font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased transition-colors hover:text-red-500 focus:text-red-500">
                     Kontak Kami
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="{{ route('faq') }}"
                     class="block font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased transition-colors hover:text-red-500 focus:text-red-500">
                     FAQ
                 </a>
             </li>
             <li>
-                <a href="#"
+                <a href="{{ route('halaman.utama') }}"
                     class="block font-sans text-base font-normal leading-relaxed text-blue-gray-900 antialiased transition-colors hover:text-red-500 focus:text-red-500">
                     Beranda
                 </a>

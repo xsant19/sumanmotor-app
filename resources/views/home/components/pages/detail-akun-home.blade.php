@@ -63,9 +63,10 @@
                 </div>
                 <!-- Konfirmasi Password Baru -->
                 <div class="mb-4">
-                    <label for="password_confirmation" class="block text-gray-700 font-semibold mb-1">Konfirmasi Password
+                    <label for="password_confirmation" class="block text-gray-700 font-semibold mb-1">Konfirmasi
+                        Password
                         Baru</label>
-                    <input type="password" id="password_confirmation" name="password_confirmation"
+                    <input type="password" id="password_confirmation" name="password_baru_confirmation"
                         class="w-full p-2 border rounded" placeholder="Konfirmasi Password Baru Anda">
                 </div>
                 <!-- Tombol Submit -->

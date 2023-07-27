@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Log;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -24,20 +26,20 @@ class UserController extends Controller
         return view('home.components.pages.detail-akun-home', compact('user'));
     }
 
+    // Function Detail dan Update User
     public function updateUser(Request $request, User $user)
     {
         $request->validate([
             'nama' => 'required',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'password_lama' => 'nullable|min:3', // Tambahkan validasi untuk password lama
-            'password_baru' => 'nullable|min:3|confirmed', // Tambahkan validasi untuk password baru
+            'password_baru' => 'nullable|required_with:password_baru_confirmation|min:3|confirmed', // Tambahkan validasi untuk password baru
             'alamat' => 'required',
             'no_telp' => 'required',
             'role_id' => 'required',
         ]);
 
         $data = $request->all();
-
         // Verifikasi password lama
         if (isset($data['password_lama'])) {
             if (Hash::check($data['password_lama'], $user->password)) {
@@ -52,7 +54,7 @@ class UserController extends Controller
         }
         // Update data pengguna
         $user->update($data);
-        return redirect()->route('user.index')->with('success', 'Update User Berhasil');
+        return redirect()->route('logout')->with('success', 'Update User Berhasil');
     }
 
 

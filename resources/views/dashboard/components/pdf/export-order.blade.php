@@ -33,6 +33,8 @@
         .invoice-title {
             font-size: 32px;
             margin: 0;
+            padding-left: 280px;
+            text-align: left;
         }
 
         .customer-order-info {
@@ -113,11 +115,31 @@
     <div class="invoice-container">
         <div class="invoice-header">
             <div class="bengkel-info">
-                <h3>Bengkel Suman Motor</h3>
-                <p>Jl. Cekomaria No.40, Peguyangan Kangin</p>
-                <p>No. Telepon: 085792650620</p>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h3>Bengkel Suman Motor</h3>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>Jl. Cekomaria No.40, Peguyangan Kangin</p>
+                            </td>
+                            <td>
+                                <h4 class="invoice-title">Invoice</h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>No. Telepon: 085792650620</p>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <h4 class="invoice-title">Invoice</h4>
         </div>
         <div class="customer-order-info">
             <div class="info-column">

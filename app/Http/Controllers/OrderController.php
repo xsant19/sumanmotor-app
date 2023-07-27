@@ -22,6 +22,7 @@ class OrderController extends Controller
         return view('dashboard.components.pages.order.index-order', compact('orders'));
     }
 
+    // Function untuk menampilkan view tambah data Order yang dibuat oleh admin
     public function create()
     {
         // $order =  Order::all();
@@ -33,6 +34,7 @@ class OrderController extends Controller
         return view('dashboard.components.pages.order.create-order', compact('users', 'montirs', 'motors', 'services'));
     }
 
+    // Function untuk mengirim data order yang akan ditambahkan oleh admin
     public function storeOrderAdmin(Request $request)
     {
         //Acuan tanggal order : Jika order hari ini setelah jam 6 sore saat ini dihitung hari ini , jika order sebelum jam 6 sore maka dihitung orderan kemarin
@@ -53,8 +55,6 @@ class OrderController extends Controller
         $order->save();
 
         $order->services()->createMany($request['service']);
-
-
         return redirect()->route('orders.index')->with('success', 'Data Order Berhasil Ditambahkan');
     }
 
@@ -72,13 +72,14 @@ class OrderController extends Controller
         return view('dashboard.components.pages.order.detail-order', compact('order', 'motors', 'montirs', 'services'));
     }
 
+    // Funciton untuk mengirim konfirmasi status order jika ingin di acc oleh admin
     public function confirm($id, Request $request)
     {
         $order =  Order::find($id);
         $order->status_order = 'Sedang Diproses';
         $order->montir_id = $request['montir_id'];
         $order->save();
-        return redirect()->route('orders.detail', ['id' => $id]);
+        return redirect()->route('orders.index', ['id' => $id]);
     }
 
     public function edit($id, Request $request)
@@ -91,7 +92,7 @@ class OrderController extends Controller
         return redirect()->route('orders.index')->with('success', 'Data Order Berhasil Ditambahkan');;
     }
 
-
+    // Function untuk mengirim konfirmasi status order jika order telah selesai dan akan menjadi riwayat transaksi
     public function close($id)
     {
         $order =  Order::find($id);
@@ -100,17 +101,20 @@ class OrderController extends Controller
         return redirect()->route('riwayats.index')->with('success', 'Data Order Telah Berhasil Diselesaikan');;
     }
 
-    public function createorderuser()
+    //Function untuk menampilkan view tambah data order dari user yg belum memiliki data motor
+    public function createOrderByUser()
     {
         return view('home.components.pages.order-home');
     }
 
-    public function createOrderUserMotor($id)
+    // Function untuk menampilkan view tambah data order dari motor user
+    public function createOrderUserByMotor($id)
     {
         $motor =  Motor::find($id);
         return view('home.components.pages.motor-order-home', compact('motor'));
     }
 
+    // Function untuk Store Order dari USER yang sudah memiliki Data Motor
     public function storeOrderUser($id, Request $request)
     {
         $motor =  Motor::find($id);
@@ -134,6 +138,7 @@ class OrderController extends Controller
             ->with('success', 'Data Order Berhasil dibuat , silahkan tunggu');
     }
 
+    // Function untuk Store Order dari USER tanpa Motor
     public function store(Request $request)
     {
         // Nama Model -> Column pada database = Mengisi Value dengan data dari name pada form ()
@@ -163,14 +168,11 @@ class OrderController extends Controller
         $order->user_id = Auth::user()->id;
         $order->save();
 
-        // $request->validate([
-        //     'no_polisi' => 'unique:App\Models\Motor,no_polisi'
-        // ]);
-
         return redirect()->route('riwayat.byuser')
             ->with('success', 'Data Order Berhasil dibuat , silahkan tunggu');
     }
 
+    // Function Untuk Delete Order
     public function destroy(Order $order)
     {
         $order->delete();
