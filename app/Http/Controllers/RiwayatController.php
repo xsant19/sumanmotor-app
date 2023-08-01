@@ -54,15 +54,39 @@ class RiwayatController extends Controller
     }
 
 
+    // public function export(Request $request)
+    // {
+    //     // dd(["Tanggal Awal : " . $tglawal, "Tanggal Akhir: " . $tglakhir]);
+    //     $tglawal = Carbon::parse($request['tglawal'])->startOf('day')->toDateTimeString();
+    //     $tglakhir = Carbon::parse($request['tglakhir'])->endOf('day')->toDateTimeString();
+
+    //     $orders = Order::where('status_order', '=', 'Selesai')->with('services')->whereBetween('tanggal_order', [$tglawal, $tglakhir])->get();
+    //     return Excel::download(new RiwayatExport($orders), 'Laporan-' . Carbon::now()->timestamp . '.xlsx');
+    //     return Excel::download(new RiwayatExport($orders), 'Laporan-' . Carbon::now()->timestamp . '.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
+    // }
+
+
     public function export(Request $request)
     {
-        // dd(["Tanggal Awal : " . $tglawal, "Tanggal Akhir: " . $tglakhir]);
-        $tglawal = Carbon::parse($request['tglawal'])->startOf('day')->toDateTimeString();
-        $tglakhir = Carbon::parse($request['tglakhir'])->endOf('day')->toDateTimeString();
+        $tglawal = Carbon::parse($request->tglawal)->startOf('day')->toDateTimeString();
+        $tglakhir = Carbon::parse($request->tglakhir)->endOf('day')->toDateTimeString();
 
         $orders = Order::where('status_order', '=', 'Selesai')->with('services')->whereBetween('tanggal_order', [$tglawal, $tglakhir])->get();
-        return Excel::download(new RiwayatExport($orders), 'invoices.xlsx');
+
+        $format = $request->get('format'); // Mengambil parameter 'format' dari tombol yang ditekan
+
+        if ($format === 'excel') {
+            return Excel::download(new RiwayatExport($orders), 'Laporan-' . Carbon::now()->timestamp . '.xlsx');
+        } elseif ($format === 'pdf') {
+            $pdf = Pdf::loadView('dashboard.components.pages.riwayat.report-riwayat', compact('orders')); // Ganti 'laporan.pdf' dengan nama view Anda
+            return $pdf->download('Laporan-' . Carbon::now()->timestamp . '.pdf');
+        }
+
+        return redirect()->back()->with('error', 'Format cetakan tidak valid.'); // Handle jika format tidak valid
     }
+
+
+
 
     public function cetakLaporan(Request $request)
     {

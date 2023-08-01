@@ -157,9 +157,13 @@
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
                                 required>
                         </div>
-                        <button type="submit"
+                        <button name="format" value="excel" type="submit"
                             class="w-full uppercase font-bold text-white bg-gradient-to-tl from-green-600 to-lime-400 border-lime-300 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                            Cetak Sekarang
+                            Cetak Excel
+                        </button>
+                        <button name="format" value="pdf"type="submit"
+                            class="w-full uppercase font-bold text-white bg-gradient-to-tl from-red-600 to-rose-400 border-lime-300 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                            Cetak PDF
                         </button>
                     </div>
                 </form>

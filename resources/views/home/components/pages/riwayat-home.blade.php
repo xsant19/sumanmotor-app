@@ -42,7 +42,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $order->no_order }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $order->motor->nama }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order->tanggal_order)->format('d-F-Y') }}
+                                        {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order->tanggal_order)->format('d/m/Y') }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $order->status_order }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">

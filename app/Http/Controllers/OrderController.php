@@ -79,7 +79,7 @@ class OrderController extends Controller
         $order->status_order = 'Sedang Diproses';
         $order->montir_id = $request['montir_id'];
         $order->save();
-        return redirect()->route('orders.index', ['id' => $id]);
+        return redirect()->route('orders.detail', ['id' => $id]);
     }
 
     public function edit($id, Request $request)

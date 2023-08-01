@@ -22,6 +22,7 @@ class RoleSeeder extends Seeder
         $data = [
             ['name' => 'Admin'],
             ['name' => 'Pelanggan'],
+            ['name' => 'Pemilik'],
         ];
 
         foreach ($data as $value) {

@@ -108,6 +108,27 @@
         .invoice-header h4 {
             margin: 0;
         }
+
+        .custom-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .custom-table td {
+            padding: 4px;
+            /* Mengurangi padding untuk membuat sel lebih rapat */
+            border: none;
+        }
+
+        .custom-table p {
+            margin: 4px 0;
+            /* Mengurangi margin paragraf untuk membuat paragraf lebih rapat */
+        }
+
+        .custom-table tr:last-child td {
+            border-bottom: none;
+            /* Menghapus garis bawah pada baris terakhir */
+        }
     </style>
 </head>
 
@@ -141,19 +162,36 @@
                 </table>
             </div>
         </div>
-        <div class="customer-order-info">
-            <div class="info-column">
-                <p>Nama Pelanggan: {{ $order->user->nama }}</p>
-                <p>Alamat:{{ $order->user->alamat }}</p>
-                <p>Motor:{{ $order->motor->nama }}</p>
-                <p>Nomor Polisi: {{ $order->motor->no_polisi }}</p>
-            </div>
-            <div class="info-column">
-                <p>Tanggal Order: {{ $order->tanggal_order }}</p>
-                <p>Nama Montir:{{ $order->montir->nama }}</p>
-                <p>Nomor Orderan:{{ $order->no_order }}</p>
-            </div>
-        </div>
+        <table class="custom-table">
+            <tr>
+                <td>
+                    <p>Nama Pelanggan : {{ $order->user->nama }}</p>
+                </td>
+                <td>
+                    <p>Tanggal Order : {{ $order->tanggal_order }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Alamat : {{ $order->user->alamat }}</p>
+                </td>
+                <td>
+                    <p>Nama Montir : {{ $order->montir->nama }}</p>
+                </td>
+            </tr>
+            <tr>
+                <td<p>Motor:{{ $order->motor->nama }}</p>
+                    </td>
+                    <td>
+                        <p>Nomor Orderan : {{ $order->no_order }}</p>
+                    </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>Nomor Polisi : {{ $order->motor->no_polisi }}</p>
+                </td>
+            </tr>
+        </table>
         <table class="invoice-table">
             <thead>
                 <tr>

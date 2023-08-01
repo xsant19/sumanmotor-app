@@ -13,7 +13,7 @@ class DashboardController extends Controller
     public function index(): View
     {
         // $users = User::count();
-        $users = User::where('id', '!=', '1')->count();
+        $users = User::whereNotIn('id', [1, 3])->count();
         $motors = Motor::count();
         $orders = Order::where('status_order', '!=', 'Selesai')->count();
         $TotalTransaksi = Order::where('status_order', '=', 'Selesai')->sum('total_harga');

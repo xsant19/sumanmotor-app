@@ -30,7 +30,7 @@ class MontirController extends Controller
         Montir::create($request->all());
 
         return redirect()->route('montirs.index')
-            ->with('success', 'Montir created successfully.');
+            ->with('success', 'Data Montir Berhasil Dibuat.');
     }
 
     public function edit(Montir $montir)
@@ -49,7 +49,7 @@ class MontirController extends Controller
         $montir->update($request->all());
 
         return redirect()->route('montirs.index')
-            ->with('success', 'Montir updated successfully');
+            ->with('success', 'Data Montir Berhasil Terupdate');
     }
 
     public function destroy(Montir $montir)
@@ -57,6 +57,6 @@ class MontirController extends Controller
         $montir->delete();
 
         return redirect()->route('montirs.index')
-            ->with('success', 'Montir deleted successfully');
+            ->with('success', 'Data Montir Berhasil Terhapus');
     }
 }

@@ -30,5 +30,13 @@ class UserSeeder extends Seeder
             'no_telp' => '081339115092',
             'role_id' => '2',
         ]);
+        User::create([
+            'nama' => 'I Ketut Sudiarta',
+            'email' => 'Sumanmotor34@gmail.com',
+            'password' => Hash::make('123'),
+            'alamat' => 'Jalan Cekomaria 20',
+            'no_telp' => '085792650620',
+            'role_id' => '3',
+        ]);
     }
 }
