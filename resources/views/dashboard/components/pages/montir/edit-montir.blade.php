@@ -18,11 +18,11 @@
             <div class="px-6 py-6 bg-white rounded-t-2xl flex justify-between border-b border-gray-200">
                 <h6>Edit Data Montir</h6>
                 <button type="button"
-                    class=" px-4 py-2 inline-block font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"><a
+                    class=" px-4 py-2 inline-block font-bold text-center bg-gradient-to-tl from-blue-600 to-cyan-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"><a
                         href="{{ route('montirs.index') }}">Kembali</a></button>
             </div>
             <div class="flex-auto px-0 pt-0 pb-2 border-b border-gray-200">
-                <div class=" flex-auto px-0 pt-0 border-b border-gray-200">
+                <div class=" flex-auto px-0 pt-">
                     <form action="{{ route('montirs.update', $montir->id) }}" method="POST"
                         class="px-6 py-6 mb-3 bg-white rounded-t-2xl">
                         @csrf
@@ -45,8 +45,10 @@
                                 class=" p-6 pb-0 mb-0 focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
                         </div>
                         <button type="submit"
-                            class="inline-block px-4 py-2 font-bold text-center bg-gradient-to-tl from-blue-600 to-cyan-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white">Save</button>
+                            class="inline-block px-4 py-2 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400  uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white">Simpan</button>
                     </form>
                 </div>
             </div>
-        @endsection
+        </div>
+    </div>
+@endsection

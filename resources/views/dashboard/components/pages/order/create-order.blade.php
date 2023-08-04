@@ -12,7 +12,7 @@
         class="relative flex flex-col w-full min-w-0 mb-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
         <div
             class="p-6 pb-0 mb-0 bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
-            <h2 class="text-xl font-bold mb-4">Buat Order Pelanggan</h2>
+            <h2 class="text-xl font-bold mb-4">Tambah Data Order Pelanggan</h2>
             <form action="{{ route('admin.orders.store') }}" method="POST">
                 @csrf
                 <div class="grid grid-cols-2 gap-4">
@@ -87,7 +87,7 @@
                     <button type="submit"
                         class="confirm-btn mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white">Simpan</button>
                     <button type="button"
-                        class="mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-red-600 to-rose-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"><a
+                        class="mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-blue-600 to-cyan-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"><a
                             href="{{ route('admin.orders.index') }}">Kembali</button></a>
                 </div>
             </form>
