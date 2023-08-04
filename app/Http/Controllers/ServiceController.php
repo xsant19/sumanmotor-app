@@ -34,10 +34,10 @@ class ServiceController extends Controller
         return redirect()->route('orders.detail', ['id' => $request->order_id])
             ->with('success', 'Data Services Berhasil Diperbarui');
     }
-    public function destroy(Service $service)
+    public function destroy(Request $request, Service $service)
     {
         $service->delete();
-        return redirect()->route('orders.detail')
+        return redirect()->route('orders.detail', ['id' => $request->order_id])
             ->with('success', 'Service deleted successfully');
     }
 }

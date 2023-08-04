@@ -6,7 +6,7 @@
             <h1 class="text-2xl font-bold mb-4">Detail Riwayat Service</h1>
             <button type="button"
                 class="mr-0 inline-block px-2 py-1 md:px-6 md:py-3 font-bold text-center bg-gradient-to-tl from-blue-600 to-cyan-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs md:text-sm ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white">
-                <a href="{{ route('riwayat.byuser') }}">Kembali</a>
+                <a href="{{ route('riwayats.indexUser') }}">Kembali</a>
             </button>
         </div>
         <div class="bg-white shadow-md rounded-lg overflow-hidden mt-4">

@@ -11,8 +11,7 @@
                         href="{{ route('users.index') }}">Kembali</a></button>
             </div>
             @if ($errors->any())
-                <div class="bg-red-200 text-red-800 p-4 mb-4 rounded">
-                    <strong>Error:</strong>
+                <div class="relative w-full p-4 text-white bg-red-500 rounded-lg"> <strong>Error:</strong>
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>

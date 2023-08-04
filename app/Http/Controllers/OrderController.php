@@ -29,8 +29,8 @@ class OrderController extends Controller
         $montirs = Montir::all();
         $motors = Motor::all();
         $services = [];
-        $users = User::where('id', '!=', 1)->get();
-        // $motors = Motor::where('user_id', $users->user_id)->get();
+        // $users = User::where('id', '!=', 1)->get();
+        $users = User::whereNotIn('id', [1, 3])->get();
         return view('dashboard.components.pages.order.create-order', compact('users', 'montirs', 'motors', 'services'));
     }
 
@@ -54,8 +54,15 @@ class OrderController extends Controller
         $order->user_id = $request['user_id'];
         $order->save();
 
-        $order->services()->createMany($request['service']);
-        return redirect()->route('orders.index')->with('success', 'Data Order Berhasil Ditambahkan');
+        // $order->services()->createMany($request['service']);
+
+        // Cek apakah ada data service sebelum menyimpan
+        if ($request->has('service') && is_array($request['service'])) {
+            // Simpan data service jika ada
+            $order->services()->createMany($request['service']);
+        }
+
+        return redirect()->route('admin.orders.index')->with('success', 'Data Order Berhasil Ditambahkan');
     }
 
 
@@ -89,7 +96,7 @@ class OrderController extends Controller
         $order->montir_id = $request['montir_id'];
         $order->save();
         // return redirect()->route('orders.detail', ['id' => $id])->with('success', 'Data Order Berhasil Ditambahkan');;
-        return redirect()->route('orders.index')->with('success', 'Data Order Berhasil Ditambahkan');;
+        return redirect()->route('admin.orders.index')->with('success', 'Data Order Berhasil Ditambahkan');;
     }
 
     // Function untuk mengirim konfirmasi status order jika order telah selesai dan akan menjadi riwayat transaksi
@@ -115,7 +122,7 @@ class OrderController extends Controller
     }
 
     // Function untuk Store Order dari USER yang sudah memiliki Data Motor
-    public function storeOrderUser($id, Request $request)
+    public function storeOrderUserByMotor($id, Request $request)
     {
         $motor =  Motor::find($id);
         //Acuan tanggal order : Jika order hari ini setelah jam 6 sore saat ini dihitung hari ini , jika order sebelum jam 6 sore maka dihitung orderan kemarin
@@ -125,7 +132,7 @@ class OrderController extends Controller
         // Membuat no order random yang diawali huruf SMN ditambah 3 random string  ditambah Tanggal,jam,menit dan detik
         $order = new Order();
         $randomString = Str::random(3);
-        $order->no_order = 'SMN' . strtoupper($randomString) . Carbon::now()->format('dHis');
+        $order->no_order = 'SMN' . strtoupper($randomString) . Carbon::now('Asia/Makassar')->format('dHis');
 
         $order->no_antri = $order_count + 1;
         $order->tanggal_order = Carbon::now('+8');
@@ -134,7 +141,7 @@ class OrderController extends Controller
         $order->user_id = Auth::user()->id;
         $order->save();
 
-        return redirect()->route('riwayat.byuser')
+        return redirect()->route('riwayats.indexUser')
             ->with('success', 'Data Order Berhasil dibuat , silahkan tunggu');
     }
 
@@ -176,7 +183,7 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         $order->delete();
-        return redirect()->route('orders.index')
+        return redirect()->route('admin.orders.index')
             ->with('success', 'Data Order Berhasil Dihapus');
     }
 }

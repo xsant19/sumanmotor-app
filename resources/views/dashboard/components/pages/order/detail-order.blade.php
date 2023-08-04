@@ -153,7 +153,7 @@
                     @endif
                     <button type="button"
                         class="mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-red-600 to-rose-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"><a
-                            href="{{ route('orders.index') }}">Kembali</button></a>
+                            href="{{ route('admin.orders.index') }}">Kembali</button></a>
                 </div>
             </div>
         </div>
@@ -267,8 +267,7 @@
                                             Service</label>
                                         <input type="number" id="harga_service" name="harga_service"
                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                            placeholder="Harga Service"
-                                            value="{{ number_format($service->harga_service, 0, '', '.') }}">
+                                            placeholder="Harga Service" value="{{ $service->harga_service }}">
                                     </div>
                                 </div>
                                 <div class="mb-6">

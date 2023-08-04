@@ -35,7 +35,7 @@ class RiwayatController extends Controller
         return view('home.components.pages.detail-riwayat-home', compact('order'));
     }
 
-    public function riwayatTransaksiByUserDashboard(Request $request)
+    public function indexUser(Request $request)
     {
         $search = @$request['search'];
         $orders = Order::where('user_id', '=', Auth::user()->id);
@@ -56,7 +56,7 @@ class RiwayatController extends Controller
 
     // public function export(Request $request)
     // {
-    //     // dd(["Tanggal Awal : " . $tglawal, "Tanggal Akhir: " . $tglakhir]);
+    // dd(["Tanggal Awal : " . $tglawal, "Tanggal Akhir: " . $tglakhir]);
     //     $tglawal = Carbon::parse($request['tglawal'])->startOf('day')->toDateTimeString();
     //     $tglakhir = Carbon::parse($request['tglakhir'])->endOf('day')->toDateTimeString();
 
@@ -73,29 +73,16 @@ class RiwayatController extends Controller
 
         $orders = Order::where('status_order', '=', 'Selesai')->with('services')->whereBetween('tanggal_order', [$tglawal, $tglakhir])->get();
 
-        $format = $request->get('format'); // Mengambil parameter 'format' dari tombol yang ditekan
+
+        $format = $request->get('format'); // ? Mengambil parameter 'format' dari tombol yang ditekan
 
         if ($format === 'excel') {
             return Excel::download(new RiwayatExport($orders), 'Laporan-' . Carbon::now()->timestamp . '.xlsx');
         } elseif ($format === 'pdf') {
-            $pdf = Pdf::loadView('dashboard.components.pages.riwayat.report-riwayat', compact('orders')); // Ganti 'laporan.pdf' dengan nama view Anda
+            $pdf = Pdf::loadView('dashboard.components.pages.riwayat.report-riwayat', compact('orders'))->setPaper('A4', 'landscape');;
             return $pdf->download('Laporan-' . Carbon::now()->timestamp . '.pdf');
         }
 
-        return redirect()->back()->with('error', 'Format cetakan tidak valid.'); // Handle jika format tidak valid
-    }
-
-
-
-
-    public function cetakLaporan(Request $request)
-    {
-        // dd(["Tanggal Awal : " . $tglawal, "Tanggal Akhir: " . $tglakhir]);
-        $tglawal = Carbon::parse($request['tglawal'])->startOf('day')->toDateTimeString();
-        $tglakhir = Carbon::parse($request['tglakhir'])->endOf('day')->toDateTimeString();
-
-        $orders = Order::where('status_order', '=', 'Selesai')->whereBetween('tanggal_order', [$tglawal, $tglakhir])->get();
-
-        return view('dashboard.components.pages.riwayat.report-riwayat', compact('orders'));
+        return redirect()->back()->with('error', 'Format cetakan tidak valid.');  // ? Handle jika format tidak valid
     }
 }

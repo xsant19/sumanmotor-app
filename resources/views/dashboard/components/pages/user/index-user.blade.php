@@ -76,9 +76,6 @@
                                     <td
                                         class="p-2 leading-normal text-center align-middle bg-transparent border-b text-sm whitespace-nowrap shadow-transparent">
                                         <div>
-                                            <button class="text-blue-500 hover:text-blue-700 mr-2">
-                                                <i class="fas fa-eye"></i>
-                                            </button>
                                             <button class="text-green-500 hover:text-blue-700 mr-2"
                                                 onclick="window.location.href = '{{ route('users.edit', $user->id) }}'">
                                                 <i class="fas fa-edit"></i>

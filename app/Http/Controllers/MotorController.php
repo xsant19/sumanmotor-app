@@ -54,7 +54,7 @@ class MotorController extends Controller
 
     public function create()
     {
-        $users = User::where('id', '!=', 1)->get();
+        $users = User::whereNotIn('id', [1, 3])->get();
         return view('dashboard.components.pages.motor.create-motor', compact('users'));
     }
 

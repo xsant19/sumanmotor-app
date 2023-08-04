@@ -88,7 +88,7 @@
                         class="confirm-btn mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white">Simpan</button>
                     <button type="button"
                         class="mr-3 inline-block px-6 py-3 font-bold text-center bg-gradient-to-tl from-red-600 to-rose-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"><a
-                            href="{{ route('orders.index') }}">Kembali</button></a>
+                            href="{{ route('admin.orders.index') }}">Kembali</button></a>
                 </div>
             </form>
         </div>
@@ -157,7 +157,9 @@
     </div>
 
     <script type="module">
-    import { Modal } from 'flowbite';
+        import {
+            Modal
+        } from 'flowbite';
     </script>
 
     <script>

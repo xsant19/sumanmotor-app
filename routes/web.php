@@ -65,6 +65,7 @@ Route::post('/register', [AuthController::class, 'store'])->middleware('guest');
 
 Route::middleware(['auth'])->group(function () {
     Route::prefix('admin')->name('admin.')->group(function () {
+        Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
         Route::post('/orders/store', [OrderController::class, 'storeOrderAdmin'])->name('orders.store');
         // manggil nama route view wajib menambahkan admin.
     });
@@ -93,12 +94,12 @@ Route::middleware(['auth'])->group(function () {
 
 
     //CRUD ORDER
-    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+
     Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
     Route::get('/orders/user', [OrderController::class, 'createOrderByUser'])->name('orders.home');
     Route::get('/orders/user/motor/{id}', [OrderController::class, 'createOrderUserByMotor'])->name('orders.motor');
-    Route::post('/orders/store/{id}', [OrderController::class, 'storeOrderUser'])->name('orders.user');
+    Route::post('/orders/store/{id}', [OrderController::class, 'storeOrderUserByMotor'])->name('orders.user');
     Route::get('/orders/detail/{id}', [OrderController::class, 'detail'])->name('orders.detail');
     Route::post('/orders/edit/{id}', [OrderController::class, 'edit'])->name('orders.edit');
     Route::post('/confirm-order/{id}', [OrderController::class, 'confirm'])->name('orders.confirm');
@@ -111,7 +112,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/riwayats/{id}', [RiwayatController::class, 'view'])->name('riwayats.view');
     Route::get('/riwayats/user/{id}', [RiwayatController::class, 'viewUser'])->name('riwayats.view.user');
     Route::get('/export-order/{id}', [RiwayatController::class, 'exportPdf'])->name('orders.export');
-    Route::get('/riwayat/home', [RiwayatController::class, 'riwayatTransaksiByUserDashboard'])->name('riwayat.byuser');
+    Route::get('/riwayat/user', [RiwayatController::class, 'indexUser'])->name('riwayats.indexUser');
 
     //Export Controller
     Route::get('/cetak-laporan', [RiwayatController::class, 'export'])->name('cetak.laporan');

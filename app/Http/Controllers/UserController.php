@@ -16,6 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
+
         $users = User::all();
         return view('dashboard.components.pages.user.index-user', compact('users'));
     }
@@ -77,7 +78,7 @@ class UserController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:3',
             'alamat' => 'required',
-            'no_telp' => 'required',
+            'no_telp' => 'required|max:13',
             'role_id' => 'required',
         ]);
 
@@ -86,8 +87,7 @@ class UserController extends Controller
 
         User::create($data);
 
-        return redirect()->route('users.index')
-            ->with('success', 'Data User Berhasil dibuat');
+        return redirect()->route('users.index')->with('success', 'Data User Berhasil dibuat');
     }
 
     /**

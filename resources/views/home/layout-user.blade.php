@@ -19,7 +19,8 @@
                     <i class="fas fa-motorcycle mr-2"></i>
                     Motor
                 </a>
-                <a href="{{ route('riwayat.byuser') }}" class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
+                <a href="{{ route('riwayats.indexUser') }}"
+                    class="flex items-center py-2 px-4 text-gray-300 hover:bg-gray-700">
                     <i class="fas fa-history mr-2"></i>
                     Riwayat Transaksi
                 </a>

@@ -28,10 +28,10 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
             $user = Auth::user();
-            if ($user->role_id == 1 || $user->role_id == 3) {
-                return redirect('/dashboard-admin');
-            } else {
+            if ($user->role_id == 2) {
                 return redirect('/dashboard-pelanggan');
+            } else {
+                return redirect('/dashboard-admin');
             }
         }
 
