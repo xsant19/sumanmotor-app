@@ -5,12 +5,12 @@
     <section class="py-16 bg-gray-100">
         <div class="mx-auto max-w-7xl px-8 md:px-6 bg-white rounded-lg shadow">
             <!-- heading text -->
-            <div class="mb-7 sm:mb-7 pt-7">
+            <div class="mb-7 sm:mb-7 pt-7" data-aos="fade-right">
                 <span class="font-medium text-red-500">Kontak Kami</span>
                 <h1 class="text-2xl font-bold text-slate-700 sm:text-3xl">Lokasi Kami</h1>
             </div>
             <!-- features img -->
-            <div class="md:flex md:justify-between md:gap-6 xl:gap-10 pb-10">
+            <div class="md:flex md:justify-between md:gap-6 xl:gap-10 pb-10" data-aos="fade-right">
                 <div class="mb-5 max-h-[400px] md:max-h-[600px] overflow-hidden rounded-lg md:mb-0 md:w-5/12">
                     <iframe class="h-full scale-100 sm:w-full sm:object-cover"
                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15779.05269550831!2d115.2279792!3d-8.6187208!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd23ff540899bcf%3A0x7080f64d37a3994a!2sSuman%20Motor!5e0!3m2!1sid!2sid!4v1689054177630!5m2!1sid!2sid"

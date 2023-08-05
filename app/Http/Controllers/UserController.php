@@ -16,8 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-
-        $users = User::all();
+        $users = User::whereNotIn('id', [1, 3])->get();
+        // $users = User::all();
         return view('dashboard.components.pages.user.index-user', compact('users'));
     }
 

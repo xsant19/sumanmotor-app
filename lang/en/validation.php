@@ -165,8 +165,11 @@ return [
 
     'custom' => [
         'attribute-name' => [
-            'rule-name' => 'custom-message',
+            'rule-name' => 'custom-message'
         ],
+        'no_polisi' => [
+            'unique' => 'Nomor Polisi Sudah Ada'
+        ]
     ],
 
     /*

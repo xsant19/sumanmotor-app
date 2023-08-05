@@ -88,9 +88,10 @@
                                                             class="fas fa-trash"></i></button>
                                                 </form>
                                                 @if ($order->status_order != 'Menunggu')
-                                                    <button class="text-green-500 hover:text-blue-700 mr-2"
+                                                    <button
+                                                        class="mr-3 inline-block px-2 py-1.5 font-bold text-center bg-gradient-to-tl from-green-600 to-lime-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"
                                                         onclick="window.location.href = '{{ route('orders.close', $order->id) }}'">
-                                                        <i class="fas fa-check"></i>
+                                                        Selesai <i class="fas fa-check"></i>
                                                     </button>
                                                 @endif
                                             </div>

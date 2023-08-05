@@ -18,7 +18,7 @@
         <div
             class="relative flex flex-col w-full min-w-0 mb-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
             <div class="px-6 py-6 bg-white rounded-t-2xl flex justify-between border-b border-gray-200">
-                <h6>Tabel Data Montir</h6>
+                <h6>Tambah Data Montir</h6>
                 <button type="button"
                     class="inline-block px-4 py-2 font-bold text-center bg-gradient-to-tl from-blue-600 to-cyan-400 uppercase align-middle transition-all rounded-lg cursor-pointer leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md bg-150 bg-x-25 hover:scale-102 active:opacity-85 hover:shadow-soft-xs text-white"><a
                         href="{{ route('montirs.index') }}">Kembali</a></button>

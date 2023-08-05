@@ -15,6 +15,9 @@
     @include('home.components.utils.script-mobile')
     <div id="myDiv"></div>
 </body>
+<script>
+    AOS.init();
+</script>
 <script type="text/javascript">
     $(function() {
         $('#myDiv').floatingWhatsApp({

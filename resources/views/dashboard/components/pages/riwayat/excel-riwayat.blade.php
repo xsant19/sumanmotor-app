@@ -17,7 +17,9 @@
                 <tr>
                     <td rowspan="{{ $order->services->count() }}">{{ $loop->iteration }}</td>
                     <td rowspan="{{ $order->services->count() }}">{{ $order->no_order }}</td>
-                    <td rowspan="{{ $order->services->count() }}">{{ $order->tanggal_order }}</td>
+                    <td rowspan="{{ $order->services->count() }}">
+                        {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order->tanggal_order)->isoFormat('D MMMM Y') }}
+                    </td>
                     <td>{{ $order->services->first()->deskripsi }}</td>
                     <td>{{ $order->services->first()->jenis_service }}</td>
                     <td>{{ $order->services->first()->harga_service }}</td>

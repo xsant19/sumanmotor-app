@@ -18,7 +18,7 @@ class RiwayatController extends Controller
         if (isset($search)) {
             $orders = $orders->where('no_order', 'LIKE', "%$search%");
         }
-        $orders = $orders->paginate(5);
+        $orders = $orders->paginate(15);
         return view('dashboard.components.pages.riwayat.index-riwayat', compact('orders'));
     }
 

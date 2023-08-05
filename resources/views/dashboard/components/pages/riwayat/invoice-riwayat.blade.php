@@ -129,6 +129,7 @@
                     </tr>
                 </tfoot>
             </table>
+            <p>Kendala: <b>{{ $order->kendala }}</b></p>
             <p>Silakan datang ke bengkel kami dalam jam operasional untuk mengambil motor Anda. Pastikan untuk membawa
                 bukti order saat Anda datang ke bengkel.</p>
             <p>Terima kasih atas kepercayaan Anda kepada Bengkel Suman Motor. Kami berharap Anda puas dengan layanan

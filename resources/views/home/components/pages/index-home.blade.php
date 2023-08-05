@@ -11,10 +11,10 @@
                 <div class="items-center flex flex-wrap">
                     <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                         <div class="">
-                            <h1 class="text-white font-semibold text-5xl">
+                            <h1 class="text-white font-semibold text-5xl " data-aos="fade-up">
                                 Selamat Datang di Bengkel Suman Motor
                             </h1>
-                            <p class="mt-4 text-lg text-gray-300">
+                            <p class="mt-4 text-lg text-gray-300" data-aos="fade-up">
                                 Dengan pengalaman bertahun-tahun dalam
                                 industri ini, tim teknisi kami yang terampil dan berdedikasi siap memberikan pelayanan
                                 terbaik kepada pelanggan kami.
@@ -35,10 +35,13 @@
             <div class="container mx-auto px-4">
                 <div class="flex flex-wrap">
                     <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
-                        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+                        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+                            data-aos="fade-up">
                             <div class="px-4 py-5 flex-auto">
                                 <div
-                                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
+                                    class="text-white
+                                p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg
+                                rounded-full bg-red-400">
                                     <i class="fas fa-motorcycle"></i>
                                 </div>
                                 <h6 class="text-xl font-semibold">Ban</h6>
@@ -50,7 +53,8 @@
                         </div>
                     </div>
                     <div class="w-full md:w-4/12 px-4 text-center">
-                        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+                        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+                            data-aos="fade-up">
                             <div class="px-4 py-5 flex-auto">
                                 <div
                                     class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400">
@@ -65,7 +69,8 @@
                         </div>
                     </div>
                     <div class="pt-6 w-full md:w-4/12 px-4 text-center">
-                        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+                        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+                            data-aos="fade-up">
                             <div class="px-4 py-5 flex-auto">
                                 <div
                                     class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400">
@@ -82,11 +87,11 @@
                 </div>
                 <div class="flex flex-wrap items-center mt-32">
                     <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
-                        <div
-                            class="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100">
+                        <div class="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100"
+                            data-aos="fade-down">
                             <i class="fas fa-user-friends text-xl"></i>
                         </div>
-                        <h3 class="text-3xl mb-2 font-semibold leading-normal">
+                        <h3 class="text-3xl mb-2 font-semibold leading-normal" data-aos="fade-right">
                             Visi
                         </h3>
                         <ul class="list-none mt-6">
@@ -94,11 +99,11 @@
                                 <div class="flex items-center">
                                     <div>
                                         <span
-                                            class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-red-600 bg-gray-100 mr-3"><i
-                                                class="fas fa-star"></i></span>
+                                            class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-red-600 bg-gray-100 mr-3"
+                                            data-aos="fade-right"><i class="fas fa-star"></i></span>
                                     </div>
                                     <div>
-                                        <h4 class="text-gray-600">
+                                        <h4 class="text-gray-600" data-aos="fade-right">
                                             Memberikan Pelayanan Terbaik dan Terpercaya
                                         </h4>
                                     </div>
@@ -108,11 +113,12 @@
                                 <div class="flex items-center">
                                     <div>
                                         <span
-                                            class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full  text-red-600 bg-gray-100 mr-3"><i
-                                                class="fas fa-star"></i></span>
+                                            class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full  text-red-600 bg-gray-100 mr-3"
+                                            data-aos="fade-right"><i class="fas fa-star"></i></span>
                                     </div>
                                     <div>
-                                        <h4 class="text-gray-600">Menciptakan Pengalaman Pelanggan yang Memuaskan</h4>
+                                        <h4 class="text-gray-600" data-aos="fade-right">Menciptakan Pengalaman Pelanggan
+                                            yang Memuaskan</h4>
                                     </div>
                                 </div>
                             </li>
@@ -120,17 +126,18 @@
                                 <div class="flex items-center">
                                     <div>
                                         <span
-                                            class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-red-600 bg-gray-100  mr-3"><i
-                                                class="fas fa-star"></i></span>
+                                            class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-red-600 bg-gray-100  mr-3"
+                                            data-aos="fade-right"><i class="fas fa-star"></i></span>
                                     </div>
                                     <div>
-                                        <h4 class="text-gray-600">Menyediakan Service Terbaik Untuk Konsumen.</h4>
+                                        <h4 class="text-gray-600" data-aos="fade-right">Menyediakan Service Terbaik Untuk
+                                            Konsumen.</h4>
                                     </div>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                    <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
+                    <div class="w-full md:w-4/12 px-4 mr-auto ml-auto" data-aos="fade-up">
                         <div
                             class="relative flex flex-col min-w-0 break-words bg-red w-full mb-6 shadow-lg rounded-lg bg-red-600">
                             <img alt="..." src="{{ asset('assets/img/bengkel2.jpg') }}"
@@ -157,27 +164,27 @@
         <section class="relative py-20">
             <div class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
                 style="height: 80px;">
-                <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"
-                    version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+                <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg"
+                    preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
                     <polygon class="text-white fill-current" points="2560 0 2560 100 0 100"></polygon>
                 </svg>
             </div>
             <div class="container mx-auto px-4">
-                <div class="items-center flex flex-wrap">
-                    <div class="w-full md:w-4/12 ml-auto mr-auto px-4">
+                <div class="items-center flex flex-wrap ">
+                    <div class="w-full md:w-4/12 ml-auto mr-auto px-4" data-aos="fade-up">
                         <img alt="..." class="max-w-full rounded-lg shadow-lg"
                             src="{{ asset('assets/img/logo.png') }}" />
                     </div>
                     <div class="w-full md:w-5/12 ml-auto mr-auto px-4">
                         <div class="md:pr-12">
-                            <div
-                                class="text-red-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white-300">
+                            <div class="text-red-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-white-300"
+                                data-aos="fade-down">
                                 <i class="fas fa-rocket text-xl"></i>
                             </div>
-                            <h3 class="text-3xl font-semibold">Misi</h3>
+                            <h3 class="text-3xl font-semibold" data-aos="fade-right">Misi</h3>
                             <ul class="list-none mt-6">
                                 <li class="py-2">
-                                    <div class="flex items-center">
+                                    <div class="flex items-center" data-aos="fade-right">
                                         <div>
                                             <span
                                                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-red-600 bg-gray-100 mr-3"><i
@@ -191,7 +198,7 @@
                                     </div>
                                 </li>
                                 <li class="py-2">
-                                    <div class="flex items-center">
+                                    <div class="flex items-center" data-aos="fade-right">
                                         <div>
                                             <span
                                                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-red-600 bg-gray-100 mr-3"><i
@@ -204,7 +211,7 @@
                                     </div>
                                 </li>
                                 <li class="py-2">
-                                    <div class="flex items-center">
+                                    <div class="flex items-center" data-aos="fade-right">
                                         <div>
                                             <span
                                                 class="text-xs font-semibold inline-block py-1 px-2 uppercase rounded-full text-red-600 bg-gray-100 mr-3"><i
@@ -226,8 +233,8 @@
             <div class="container mx-auto px-4">
                 <div class="flex flex-wrap justify-center text-center mb-10">
                     <div class="w-full lg:w-6/12 px-4">
-                        <h2 class="text-4xl font-semibold">Brand Partner</h2>
-                        <p class="text-lg leading-relaxed m-4 text-gray-600">
+                        <h2 class="text-4xl font-semibold" data-aos="fade-right">Brand Partner</h2>
+                        <p class="text-lg leading-relaxed m-4 text-gray-600" data-aos="fade-up">
                             Kepercayaan dan kerjasama yang kuat antara Suman Motor dan Brand Partner memastikan bahwa
                             kendaraan pelanggan diperbaiki dengan komponen yang tepat dan berkualitas tinggi.
                         </p>
@@ -235,33 +242,33 @@
                 </div>
                 <div class="flex flex-wrap">
                     <div class="grid gap-6 sm:grid-cols-2 md:grid-cols-3 xl:gap-8">
-                        <div
-                            class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300/10 duration-200">
+                        <div class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300/10 duration-200"
+                            data-aos="flip-down">
                             <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Inoue_Rubber_company_logo.svg"
                                 alt="" class="h-20 w-screen">
                         </div>
-                        <div
-                            class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300/10 duration-200">
+                        <div class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300/10 duration-200"
+                            data-aos="flip-down">
                             <img src="https://files.tokoparts.com/images/car-brand-logo/YEc6Hoo3LqMr47YDhyzJRSixJf91nOFQOGTbWduI.png"
                                 alt="" class="h-20 w-30">
                         </div>
-                        <div
-                            class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300/10 duration-200">
+                        <div class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300/10 duration-200"
+                            data-aos="flip-down">
                             <img src="https://seeklogo.com/images/F/federal-oil-logo-93FE8ED430-seeklogo.com.png"
                                 alt="" class="h-20 w-30">
                         </div>
-                        <div
-                            class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300/10 duration-200">
+                        <div class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300/10 duration-200"
+                            data-aos="flip-down">
                             <img src="https://seeklogo.com/images/T/top-1-logo-5C595830FD-seeklogo.com.png" alt=""
                                 class="h-20 w-30">
                         </div>
-                        <div
-                            class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300/10 duration-200">
+                        <div class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300/10 duration-200"
+                            data-aos="flip-down">
                             <img src="https://seeklogo.com/images/Y/yamalube-logo-2CB62D4519-seeklogo.com.png"
                                 alt="" class="h-20 w-30">
                         </div>
-                        <div
-                            class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300/10 duration-200">
+                        <div class="group flex cursor-pointer flex-col items-center rounded-xl border border-blue-500/10 bg-white px-5 py-8 shadow-lg shadow-blue-300/10 duration-200"
+                            data-aos="flip-down">
                             <img src="https://seeklogo.com/images/P/pertamina-logo-E77BE5DE0C-seeklogo.com.png"
                                 alt="" class="h-20 w-screen">
                         </div>

@@ -28,7 +28,7 @@ class Order extends Model
 
     public function motor(): BelongsTo
     {
-        return $this->belongsTo(Motor::class);
+        return $this->belongsTo(Motor::class)->withTrashed();
     }
 
     public function user(): BelongsTo

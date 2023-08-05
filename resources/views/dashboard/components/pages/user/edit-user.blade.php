@@ -48,13 +48,13 @@
                         <input type="text" id="no_telp" name="no_telp" value="{{ old('no_telp', $user->no_telp) }}"
                             class="w-full border-gray-300 rounded-md shadow-sm">
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-4" hidden>
                         <label for="role_id" class="block font-medium">Role ID</label>
                         <input type="text" id="role_id" name="role_id" value="{{ old('role_id', $user->role_id) }}"
                             class="w-full border-gray-300 rounded-md shadow-sm">
                     </div>
                     <button type="submit"
-                        class=" mb-3 inline-block px-4 py-2 bg-gradient-to-tl from-green-600 to-lime-400 font-bold text-white uppercase  rounded-md hover:bg-blue-600">Update</button>
+                        class=" mb-3 inline-block px-4 py-2 bg-gradient-to-tl from-green-600 to-lime-400 font-bold text-white uppercase  rounded-md hover:bg-blue-600">Simpan</button>
                 </form>
             </div>
         </div>

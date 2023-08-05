@@ -44,7 +44,7 @@ class OrderController extends Controller
         // Membuat no order random yang diawali huruf SMN ditambah 3 random string  ditambah Tanggal,jam,menit dan detik
         $order = new Order();
         $randomString = Str::random(3);
-        $order->no_order = 'SMN' . strtoupper($randomString) . Carbon::now()->format('dHis');
+        $order->no_order = 'SMN' . strtoupper($randomString) . Carbon::now('Asia/Makassar')->format('dHis');
 
         $order->no_antri = $order_count + 1;
         $order->tanggal_order = Carbon::now('+8');
@@ -148,6 +148,11 @@ class OrderController extends Controller
     // Function untuk Store Order dari USER tanpa Motor
     public function store(Request $request)
     {
+        $request->validate([
+            'no_polisi' => 'required|unique:motors,no_polisi',
+            // 'email' => 'required|email|unique:users,email,' . $motor->id,
+        ]);
+
         // Nama Model -> Column pada database = Mengisi Value dengan data dari name pada form ()
         $motor = new Motor();
         $motor->user_id = Auth::user()->id;
@@ -165,7 +170,7 @@ class OrderController extends Controller
         // Membuat no order random yang diawali huruf SMN ditambah 3 random string  ditambah Tanggal,jam,menit dan detik
         $order = new Order();
         $randomString = Str::random(3);
-        $order->no_order = 'SMN' . strtoupper($randomString) . Carbon::now()->format('dHis');
+        $order->no_order = 'SMN' . strtoupper($randomString) . Carbon::now('Asia/Makassar')->format('dHis');
 
         //Fungsi Order
         $order->no_antri = $order_count + 1;
@@ -175,7 +180,7 @@ class OrderController extends Controller
         $order->user_id = Auth::user()->id;
         $order->save();
 
-        return redirect()->route('riwayat.byuser')
+        return redirect()->route('riwayats.indexUser')
             ->with('success', 'Data Order Berhasil dibuat , silahkan tunggu');
     }
 

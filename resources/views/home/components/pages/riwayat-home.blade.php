@@ -5,10 +5,15 @@
         <div class="max-w-4xl mx-auto">
             <div class="w-full px-6 py-6 mx-auto">
                 @if ($message = Session::get('success'))
-                    <div
-                        class="relative p-2 mb-3 text-sm text-white border border-solid rounded-lg bg-gradient-to-tl from-green-600 to-lime-400 border-lime-300">
-                        {{ $message }}
-                    </div>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Success',
+                                text: '{{ $message }}',
+                            });
+                        });
+                    </script>
                 @endif
                 <div class="flex flex-col md:flex-row items-center md:items-start justify-between pb-4">
                     <h2 class="text-2xl font-bold mb-1 md:mb-0">Riwayat Transaksi</h2>

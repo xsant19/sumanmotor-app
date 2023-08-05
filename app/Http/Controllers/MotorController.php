@@ -22,7 +22,7 @@ class MotorController extends Controller
                     ->where('nama', 'LIKE', "%$keyword%");
             });
         }
-        $motors = $motors->paginate(5);
+        $motors = $motors->paginate(15);
         return view('dashboard.components.pages.motor.index-motor', compact('motors', 'keyword'));
     }
 
@@ -33,7 +33,11 @@ class MotorController extends Controller
         // Mendapatkan nilai dari parameter "search" dari request dan menyimpannya dalam variabel $search
         $search = @$request['search'];
         // Mengambil data motor milik pengguna yang sedang login melalui relasi "motors" (diasumsikan ada relasi "motors" pada model User)
-        $motors = Auth::user()->motors();
+        /**
+         * @var App\Models\User $user
+         */
+        $user = Auth::user();
+        $motors = $user->motors();
         // Jika ada nilai pada variabel $search, maka dilakukan filtering data motor berdasarkan nilai tersebut menggunakan WHERE clause.
         if (isset($search)) {
             $motors = $motors->where('no_polisi', 'LIKE', "%$search%")

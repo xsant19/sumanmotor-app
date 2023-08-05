@@ -168,7 +168,9 @@
                     <p>Nama Pelanggan : {{ $order->user->nama }}</p>
                 </td>
                 <td>
-                    <p>Tanggal Order : {{ $order->tanggal_order }}</p>
+                    <p>Tanggal Order :
+                        {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order->tanggal_order)->isoFormat('D MMMM Y') }}
+                    </p>
                 </td>
             </tr>
             <tr>

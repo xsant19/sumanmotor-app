@@ -2,6 +2,20 @@
 @section('title', 'Order Service')
 @section('content_dashboard')
     <div class="w-full max-w-md mx-auto">
+        @if ($errors->any())
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    @foreach ($errors->all() as $error)
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: '{{ $error }}',
+                            confirmButtonColor: '#3085d6',
+                        });
+                    @endforeach
+                });
+            </script>
+        @endif
         <h2 class="text-2xl font-bold mb-4">Form Order Service</h2>
         <form action="{{ route('orders.store') }}" method="POST" id="orderForm"
             class="w-full max-w-md mx-auto shadow-md rounded px-8 pt-6 pb-8 mb-4">
