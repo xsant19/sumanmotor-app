@@ -3,10 +3,15 @@
 @section('title', 'Riwayat Order')
 <div class="w-full px-6 py-6 mx-auto">
     @if ($message = Session::get('success'))
-        <div
-            class="relative p-2 mb-3 text-sm text-white border border-solid rounded-lg bg-gradient-to-tl from-green-600 to-lime-400 border-lime-300">
-            {{ $message }}
-        </div>
+        <script>
+            Swal.fire({
+                title: 'Sukses',
+                text: '{{ $message }}',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 3000 // Display duration in milliseconds (3 seconds in this case)
+            });
+        </script>
     @endif
     <div
         class="relative flex flex-col w-full min-w-0 mb-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
@@ -104,11 +109,13 @@
                                             <i class="fas fa-eye"></i>
                                         </button></a>
                                     <form action="{{ route('orders.destroy', $order->id) }}" method="POST"
-                                        class="inline-block">
+                                        class="inline-block" id="deleteForm{{ $order->id }}">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="text-red-500 mr-2"> <i
-                                                class="fas fa-trash"></i></button>
+                                        <button type="button" class="text-red-500 mr-2 delete-btn"
+                                            data-id="{{ $order->id }}">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
                                     </form>
                                     <a href="{{ route('orders.export', $order->id) }}"><button
                                             class="text-gray-500 hover:text-blue-700 mr-2">
@@ -171,4 +178,28 @@
         </div>
     </div>
 </div>
+<script>
+    const deleteButtons = document.querySelectorAll(".delete-btn");
+    deleteButtons.forEach((button) => {
+        button.addEventListener("click", function() {
+            const orderId = button.getAttribute("data-id");
+
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: 'Apakah Anda yakin ingin menghapus data?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Ya, Hapus!',
+                cancelButtonText: 'Batal'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    const deleteForm = document.getElementById("deleteForm" + orderId);
+                    deleteForm.submit();
+                }
+            });
+        });
+    });
+</script>
 @endsection

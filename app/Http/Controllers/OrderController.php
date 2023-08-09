@@ -18,7 +18,7 @@ class OrderController extends Controller
 
     public function index()
     {
-        $orders = Order::where('status_order', '!=', 'Selesai')->paginate(5);
+        $orders = Order::where('status_order', '!=', 'Selesai')->paginate(15);
         return view('dashboard.components.pages.order.index-order', compact('orders'));
     }
 
@@ -52,6 +52,7 @@ class OrderController extends Controller
         $order->kendala = $request['kendala'];
         $order->status_order = 'Sedang Diproses';
         $order->user_id = $request['user_id'];
+        $order->montir_id = $request['montir_id'];
         $order->save();
 
         // $order->services()->createMany($request['service']);
@@ -96,7 +97,7 @@ class OrderController extends Controller
         $order->montir_id = $request['montir_id'];
         $order->save();
         // return redirect()->route('orders.detail', ['id' => $id])->with('success', 'Data Order Berhasil Ditambahkan');;
-        return redirect()->route('admin.orders.index')->with('success', 'Data Order Berhasil Ditambahkan');;
+        return redirect()->route('admin.orders.index')->with('success', 'Data Order Berhasil Diedit');;
     }
 
     // Function untuk mengirim konfirmasi status order jika order telah selesai dan akan menjadi riwayat transaksi

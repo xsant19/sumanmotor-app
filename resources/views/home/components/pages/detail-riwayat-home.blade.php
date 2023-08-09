@@ -25,7 +25,8 @@
                     </div>
                     <div>
                         <p class="mb-2"><span class="font-semibold">Tanggal Order:</span>
-                            {{ $order->tanggal_order }}</p>
+                            {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order->tanggal_order)->isoFormat('D MMMM Y') }}
+                        </p>
                         <p class="mb-2"><span class="font-semibold">Nama Montir :</span>
                             {{ $order->montir->nama ?? 'Belum ditentukan' }}
                         </p>

@@ -113,6 +113,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/riwayats/user/{id}', [RiwayatController::class, 'viewUser'])->name('riwayats.view.user');
     Route::get('/export-order/{id}', [RiwayatController::class, 'exportPdf'])->name('orders.export');
     Route::get('/riwayat/user', [RiwayatController::class, 'indexUser'])->name('riwayats.indexUser');
+    Route::delete('/riwayat/{order}', [RiwayatController::class, 'destroy'])->name('riwayats.destroy');
+
 
     //Export Controller
     Route::get('/cetak-laporan', [RiwayatController::class, 'export'])->name('cetak.laporan');

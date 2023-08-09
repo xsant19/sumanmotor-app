@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <p class="text-gray-500 mt-4">Kendala:</p>
-                <textarea name="kendala" class="block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" rows="4"></textarea>
+                <textarea name="kendala" class="block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" rows="4" required></textarea>
                 <div class="mb-4 mt-4">
                     <label for="nama_montir" class="block text-sm font-medium text-gray-700">Pilih Montir</label>
                     <select id="nama_montir" name="montir_id"

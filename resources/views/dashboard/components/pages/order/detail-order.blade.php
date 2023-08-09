@@ -3,10 +3,15 @@
 @section('content')
     <div class="w-full px-6 py-6 mx-auto">
         @if ($message = Session::get('success'))
-            <div
-                class="relative p-2 mb-3 text-sm text-white border border-solid rounded-lg bg-gradient-to-tl from-green-600 to-lime-400 border-lime-300">
-                {{ $message }}
-            </div>
+            <script>
+                Swal.fire({
+                    title: 'Sukses',
+                    text: '{{ $message }}',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000 // Display duration in milliseconds (3 seconds in this case)
+                });
+            </script>
         @endif
         <div
             class="relative flex flex-col w-full min-w-0 mb-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">
@@ -37,7 +42,8 @@
                     <label for="tanggal_order" class="block text-sm font-medium text-gray-700">Tanggal Order</label>
                     <input type="text" id="tanggal_order" name="tanggal_order"
                         class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-                        value="{{ $order->tanggal_order }}" disabled>
+                        value="{{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order->tanggal_order)->isoFormat('l/ HH:mm') }}"
+                        disabled>
                 </div>
                 <div class="grid grid-cols-2 gap-4">
                     <div>
@@ -64,11 +70,13 @@
                     @disabled($order->status_order == 'Menunggu')>{{ $order->kendala }}</textarea>
                 <div class="mb-4 mt-4">
                     <label for="nama_montir" class="block text-sm font-medium text-gray-700">Pilih Montir</label>
-                    <select id="nama_montir" name="montir_id"
-                        class="block px-6 py-2 shadow-sm sm:text-sm border-gray-300 rounded-md">
+                    <select name="montir_id" id="montir_id"
+                        class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
+                        <option value="" @if (!$order->montir_id) selected @endif>---Pilih Montir---</option>
                         @foreach ($montirs as $montir)
-                            <option value='{{ $montir->id }}' @selected($montir->id == $order->montir_id)>
-                                {{ $montir->nama }}</option>
+                            <option value="{{ $montir->id }}" @if ($montir->id == $order->montir_id) selected @endif>
+                                {{ $montir->nama }}
+                            </option>
                         @endforeach
                     </select>
                 </div>

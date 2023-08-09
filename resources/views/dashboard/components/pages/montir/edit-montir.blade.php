@@ -3,15 +3,19 @@
 @section('content')
     <div class="w-full px-6 py-6 mx-auto">
         @if ($errors->any())
-            <div
-                class="relative p-6 mb-3 text-sm text-white border border-solid rounded-lg bg-gradient-to-tl from-red-600 to-rose-400">
-                <strong>Error:</strong>
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
+            <script>
+                let errorMessage = '<strong>Error:</strong><ul>';
+                @foreach ($errors->all() as $error)
+                    errorMessage += '<li>{{ $error }}</li>';
+                @endforeach
+                errorMessage += '</ul>';
+
+                Swal.fire({
+                    title: 'Error',
+                    html: errorMessage,
+                    icon: 'error'
+                });
+            </script>
         @endif
         <div
             class="relative flex flex-col w-full min-w-0 mb-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">

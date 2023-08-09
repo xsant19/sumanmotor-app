@@ -18,8 +18,24 @@ class RiwayatController extends Controller
         if (isset($search)) {
             $orders = $orders->where('no_order', 'LIKE', "%$search%");
         }
-        $orders = $orders->paginate(15);
+        $orders = $orders->orderBy('created_at', 'desc') // Mengurutkan berdasarkan tanggal terbaru
+            ->paginate(15);
         return view('dashboard.components.pages.riwayat.index-riwayat', compact('orders'));
+    }
+
+    public function indexUser(Request $request)
+    {
+        $search = @$request['search'];
+        $orders = Order::where('user_id', '=', Auth::user()->id);
+
+        if (isset($search)) {
+            $orders = $orders->where('no_order', 'LIKE', "%$search%");
+        }
+
+        $orders = $orders->orderBy('created_at', 'desc') // Mengurutkan berdasarkan tanggal terbaru
+            ->paginate(5);
+
+        return view('home.components.pages.riwayat-home', compact('orders'));
     }
 
 
@@ -35,16 +51,6 @@ class RiwayatController extends Controller
         return view('home.components.pages.detail-riwayat-home', compact('order'));
     }
 
-    public function indexUser(Request $request)
-    {
-        $search = @$request['search'];
-        $orders = Order::where('user_id', '=', Auth::user()->id);
-        if (isset($search)) {
-            $orders = $orders->where('no_order', 'LIKE', "%$search%");
-        }
-        $orders = $orders->orderBy('created_at', 'desc')->paginate(5);
-        return view('home.components.pages.riwayat-home', compact('orders'));
-    }
 
     public function exportPdf($id, Request $request)
     {
@@ -84,5 +90,13 @@ class RiwayatController extends Controller
         }
 
         return redirect()->back()->with('error', 'Format cetakan tidak valid.');  // ? Handle jika format tidak valid
+    }
+
+    // Function Untuk Delete Order
+    public function destroy(Order $order)
+    {
+        $order->delete();
+        return redirect()->route('riwayats.index')
+            ->with('success', 'Data  Riwayat Order Berhasil Dihapus');
     }
 }

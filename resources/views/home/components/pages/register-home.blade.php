@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css"> --}}
     <link rel="stylesheet"
         href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
-    <section class=" py-1 bg-blueGray-50">
+  <section class="min-h-screen py-1 bg-blue-gray-50 flex items-center justify-center">
         <div class="w-full lg:w-8/12 px-4 mx-auto mt-6">
             <div
                 class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-100 border-0">
@@ -97,8 +97,6 @@
         </form>
         <small class="mt-6 font-semibold">Sudah memiliki akun? <a class="text-red-600" href="/login">Login
                 disini!</a></small>
-    </div>
-    </div>
     </div>
     </section>
 @endsection

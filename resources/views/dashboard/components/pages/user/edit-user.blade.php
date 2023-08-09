@@ -11,13 +11,19 @@
                         href="{{ route('users.index') }}">Kembali</a></button>
             </div>
             @if ($errors->any())
-                <div class="relative w-full p-4 text-white bg-red-500 rounded-lg"> <strong>Error:</strong>
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
+                <script>
+                    let errorMessage = '<strong>Error:</strong><ul>';
+                    @foreach ($errors->all() as $error)
+                        errorMessage += '<li>{{ $error }}</li>';
+                    @endforeach
+                    errorMessage += '</ul>';
+
+                    Swal.fire({
+                        title: 'Error',
+                        html: errorMessage,
+                        icon: 'error'
+                    });
+                </script>
             @endif
             <div class="flex-auto px-0 pt-0 border-b border-gray-200">
                 <form action="{{ route('users.update', $user->id) }}" method="POST"

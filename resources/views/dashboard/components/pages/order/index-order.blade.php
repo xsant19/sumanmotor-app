@@ -3,10 +3,15 @@
 @section('content')
     <div class="w-full px-6 py-6 mx-auto">
         @if ($message = Session::get('success'))
-            <div
-                class="relative p-2 mb-3 text-sm text-white border border-solid rounded-lg bg-gradient-to-tl from-green-600 to-lime-400 border-lime-300">
-                {{ $message }}
-            </div>
+            <script>
+                Swal.fire({
+                    title: 'Sukses',
+                    text: '{{ $message }}',
+                    icon: 'success',
+                    showConfirmButton: false,
+                    timer: 3000 // Display duration in milliseconds (3 seconds in this case)
+                });
+            </script>
         @endif
         <div
             class="relative flex flex-col w-full min-w-0 mb-0 break-words bg-white border-0 border-transparent border-solid shadow-soft-xl rounded-2xl bg-clip-border">

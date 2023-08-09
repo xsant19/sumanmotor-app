@@ -2,7 +2,7 @@
 @section('title', 'Tentang Kami')
 @section('content')
     <!-- ====== about ====== -->
-    <section class="py-16 bg-gray-100">
+    <section class="min-h-screen py-1 bg-blue-gray-50 flex items-center justify-center">
         <div class="mx-auto max-w-7xl px-8 md:px-6">
             <div class="flex flex-col md:flex-row md:justify-between md:gap-6">
                 <!-- about text -->

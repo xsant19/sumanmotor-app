@@ -2,7 +2,7 @@
 @section('title', 'Kontak Kami')
 @section('content')
     <!-- ====== features ====== -->
-    <section class="py-16 bg-gray-100">
+    <section class="min-h-screen py-1 bg-blue-gray-50 flex items-center justify-center">
         <div class="mx-auto max-w-7xl px-8 md:px-6 bg-white rounded-lg shadow">
             <!-- heading text -->
             <div class="mb-7 sm:mb-7 pt-7" data-aos="fade-right">
