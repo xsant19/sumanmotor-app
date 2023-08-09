@@ -29,6 +29,10 @@
                                 </th>
                                 <th
                                     class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    Nama Pemilik
+                                </th>
+                                <th
+                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                     Nomor Antri
                                 </th>
                                 <th
@@ -36,8 +40,20 @@
                                     Nomor Order
                                 </th>
                                 <th
+                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    Nama Motor
+                                </th>
+                                <th
+                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    No Polisi
+                                </th>
+                                <th
                                     class="px-6 py-3 pl-2 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                     Tanggal Order</th>
+                                <th
+                                    class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
+                                    Nama Montir
+                                </th>
                                 <th
                                     class="px-6 py-3 font-bold text-left uppercase align-middle bg-transparent border-b border-gray-200 shadow-none text-xxs border-b-solid tracking-none whitespace-nowrap text-slate-400 opacity-70">
                                     Status</th>
@@ -58,6 +74,10 @@
                                     </td>
                                     <td
                                         class="p-2 align-middle text-left bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                        <p class="mb-0 font-semibold leading-tight text-xs">{{ $order->user->nama }}</p>
+                                    </td>
+                                    <td
+                                        class="p-2 align-middle text-center bg-transparent border-b whitespace-nowrap shadow-transparent">
                                         <p class="mb-0 font-semibold leading-tight text-xs">{{ $order->no_antri }}</p>
                                     </td>
                                     <td
@@ -65,8 +85,24 @@
                                         <p class="mb-0 font-semibold leading-tight text-xs">{{ $order->no_order }}</p>
                                     </td>
                                     <td
+                                        class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                        <p class="mb-0 font-semibold leading-tight text-xs">{{ $order->motor->nama }}</p>
+                                    </td>
+                                    <td
+                                        class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                        <p class="mb-0 font-semibold leading-tight text-xs">{{ $order->motor->no_polisi }}
+                                        </p>
+                                    </td>
+                                    <td
                                         class="p-2 align-middle bg-transparent border-b text-sm whitespace-nowrap shadow-transparent">
-                                        <p class="mb-0 font-semibold leading-tight text-xs">{{ $order->tanggal_order }}</p>
+                                        <p class="mb-0 font-semibold leading-tight text-xs">
+                                            {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order->tanggal_order)->isoFormat('l/ HH:mm') }}
+                                        </p>
+                                    </td>
+                                    <td
+                                        class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                        <p class="mb-0 font-semibold leading-tight text-xs">{{ $order->montir->nama }}
+                                        </p>
                                     </td>
                                     <td
                                         class="p-2 align-middle bg-transparent border-b text-sm whitespace-nowrap shadow-transparent">
@@ -81,11 +117,13 @@
                                                     <i class="fas fa-edit"></i>
                                                 </button>
                                                 <form action="{{ route('orders.destroy', $order->id) }}" method="POST"
-                                                    class="inline-block mr-2">
+                                                    class="inline-block mr-2" id="deleteForm{{ $order->id }}">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="text-red-500"> <i
-                                                            class="fas fa-trash"></i></button>
+                                                    <button type="button" class="text-red-500 delete-btn"
+                                                        data-id="{{ $order->id }}">
+                                                        <i class="fas fa-trash"></i>
+                                                    </button>
                                                 </form>
                                                 @if ($order->status_order != 'Menunggu')
                                                     <button
@@ -106,4 +144,28 @@
         </div>
         <div class="mt-6"> {{ $orders->links() }}</div>
     </div>
+    <script>
+        const deleteButtons = document.querySelectorAll(".delete-btn");
+        deleteButtons.forEach((button) => {
+            button.addEventListener("click", function() {
+                const orderId = button.getAttribute("data-id");
+
+                Swal.fire({
+                    title: 'Konfirmasi',
+                    text: 'Apakah Anda yakin ingin menghapus data?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Ya, Hapus!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        const deleteForm = document.getElementById("deleteForm" + orderId);
+                        deleteForm.submit();
+                    }
+                });
+            });
+        });
+    </script>
 @endsection
