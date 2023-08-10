@@ -39,7 +39,7 @@ class OrderController extends Controller
     {
         //Acuan tanggal order : Jika order hari ini setelah jam 6 sore saat ini dihitung hari ini , jika order sebelum jam 6 sore maka dihitung orderan kemarin
         $date_start = Carbon::now('+8')->format('H') > 18 ? Carbon::now('+8')->hour(18)->minute(0)->second(0) : Carbon::now('+8')->hour(18)->minute(0)->second(0)->subDay();
-        $order_count = Order::where('tanggal_order', '>=', $date_start->format('Y-m-d H:i:s'))->count();
+        $order_count = Order::withTrashed()->where('tanggal_order', '>=', $date_start->format('Y-m-d H:i:s'))->count();
 
         // Membuat no order random yang diawali huruf SMN ditambah 3 random string  ditambah Tanggal,jam,menit dan detik
         $order = new Order();
@@ -128,7 +128,7 @@ class OrderController extends Controller
         $motor =  Motor::find($id);
         //Acuan tanggal order : Jika order hari ini setelah jam 6 sore saat ini dihitung hari ini , jika order sebelum jam 6 sore maka dihitung orderan kemarin
         $date_start = Carbon::now('+8')->format('H') > 18 ? Carbon::now('+8')->hour(18)->minute(0)->second(0) : Carbon::now('+8')->hour(18)->minute(0)->second(0)->subDay();
-        $order_count = Order::where('tanggal_order', '>=', $date_start->format('Y-m-d H:i:s'))->count();
+        $order_count = Order::withTrashed()->where('tanggal_order', '>=', $date_start->format('Y-m-d H:i:s'))->count();
 
         // Membuat no order random yang diawali huruf SMN ditambah 3 random string  ditambah Tanggal,jam,menit dan detik
         $order = new Order();
@@ -165,7 +165,7 @@ class OrderController extends Controller
 
         //Acuan tanggal order : Jika order hari ini setelah jam 6 sore saat ini dihitung hari ini , jika order sebelum jam 6 sore maka dihitung orderan kemarin
         $date_start = Carbon::now('+8')->format('H') > 18 ? Carbon::now('+8')->hour(18)->minute(0)->second(0) : Carbon::now('+8')->hour(18)->minute(0)->second(0)->subDay();
-        $order_count = Order::where('tanggal_order', '>=', $date_start->format('Y-m-d H:i:s'))->count();
+        $order_count = Order::withTrashed()->where('tanggal_order', '>=', $date_start->format('Y-m-d H:i:s'))->count();
 
 
         // Membuat no order random yang diawali huruf SMN ditambah 3 random string  ditambah Tanggal,jam,menit dan detik

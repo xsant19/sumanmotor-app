@@ -87,7 +87,7 @@
                                     <div class="">
                                         <div>
                                             <h6 class="mb-0 font-semibold leading-tight text-center text-xs">
-                                                {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order->tanggal_order)->isoFormat('D MMMM Y') }}
+                                                {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order->tanggal_order)->isoFormat('DD MMMM Y') }}
                                             </h6>
                                         </div>
                                     </div>

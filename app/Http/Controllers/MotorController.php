@@ -15,11 +15,16 @@ class MotorController extends Controller
         // Fitur Pencarian data berdasarkan input pengguna yang difilter berdasarkan nama pada tabel users
         $keyword = @$request['search'];
         $motors = new Motor();
+
         if (isset($request['search'])) {
-            $motors = $motors->whereIn('user_id', function ($query) use ($keyword) {
-                $query->select('id')
-                    ->from('users')
-                    ->where('nama', 'LIKE', "%$keyword%");
+            $motors = $motors->where(function ($query) use ($keyword) {
+                $query->where('nama', 'LIKE', "%$keyword%")
+                    ->orWhere('no_polisi', 'LIKE', "%$keyword%")
+                    ->orWhere('merk_motor', 'LIKE', "%$keyword%")
+                    ->orWhere('jenis_motor', 'LIKE', "%$keyword%")
+                    ->orWhereHas('user', function ($userQuery) use ($keyword) {
+                        $userQuery->where('nama', 'LIKE', "%$keyword%");
+                    });
             });
         }
         $motors = $motors->paginate(15);

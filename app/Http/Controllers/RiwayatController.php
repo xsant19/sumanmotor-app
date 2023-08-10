@@ -16,7 +16,18 @@ class RiwayatController extends Controller
         $orders = Order::where('status_order', '=', 'Selesai');
         $search = @$request['search'];
         if (isset($search)) {
-            $orders = $orders->where('no_order', 'LIKE', "%$search%");
+            $orders = $orders->where(function ($query) use ($search) {
+                $query->where('no_order', 'LIKE', "%$search%")
+                    ->orWhere(function ($query) use ($search) {
+                        // Ubah format bulan dari Indonesia ke Inggris
+                        $search = str_replace(
+                            ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'],
+                            ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                            $search
+                        );
+                        $query->whereRaw("DATE_FORMAT(tanggal_order, '%M') LIKE ?", ["%$search%"]);
+                    });
+            });
         }
         $orders = $orders->orderBy('created_at', 'desc') // Mengurutkan berdasarkan tanggal terbaru
             ->paginate(15);
