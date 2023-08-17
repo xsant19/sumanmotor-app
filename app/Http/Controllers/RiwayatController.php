@@ -70,19 +70,6 @@ class RiwayatController extends Controller
         return $pdf->download('export-order' . Carbon::now()->timestamp . '.pdf');
     }
 
-
-    // public function export(Request $request)
-    // {
-    // dd(["Tanggal Awal : " . $tglawal, "Tanggal Akhir: " . $tglakhir]);
-    //     $tglawal = Carbon::parse($request['tglawal'])->startOf('day')->toDateTimeString();
-    //     $tglakhir = Carbon::parse($request['tglakhir'])->endOf('day')->toDateTimeString();
-
-    //     $orders = Order::where('status_order', '=', 'Selesai')->with('services')->whereBetween('tanggal_order', [$tglawal, $tglakhir])->get();
-    //     return Excel::download(new RiwayatExport($orders), 'Laporan-' . Carbon::now()->timestamp . '.xlsx');
-    //     return Excel::download(new RiwayatExport($orders), 'Laporan-' . Carbon::now()->timestamp . '.pdf', \Maatwebsite\Excel\Excel::DOMPDF);
-    // }
-
-
     public function export(Request $request)
     {
         $tglawal = Carbon::parse($request->tglawal)->startOf('day')->toDateTimeString();

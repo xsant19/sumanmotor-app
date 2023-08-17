@@ -182,15 +182,19 @@
                 </td>
             </tr>
             <tr>
-                <td<p>Motor:{{ $order->motor->nama }}</p>
-                    </td>
-                    <td>
-                        <p>Nomor Orderan : {{ $order->no_order }}</p>
-                    </td>
+                <td>
+                    <p>Motor:{{ $order->motor->nama }}</p>
+                </td>
+                <td>
+                    <p>Nomor Orderan : {{ $order->no_order }}</p>
+                </td>
             </tr>
             <tr>
                 <td>
                     <p>Nomor Polisi : {{ $order->motor->no_polisi }}</p>
+                </td>
+                <td>
+                    <p>Kilometer : {{ $order->motor->kilometer ?? 0 }}</p>
                 </td>
             </tr>
         </table>
@@ -223,6 +227,10 @@
         <div class="invoice-footer">
             <div class="invoice-column">
                 <p class="invoice-note">Kendala: {{ $order->kendala }}</p>
+            </div>
+            <div class="invoice-column">
+                <p class="invoice-note">Jadwal Service Kembali : {{ $order->motor->kilometer + 2000 }} Km</p> Atau Pada
+                {{ \Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $order->tanggal_order)->addMonths(2)->isoFormat('D MMMM Y') }}
             </div>
         </div>
         <div class="invoice-footer">

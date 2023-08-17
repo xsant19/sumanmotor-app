@@ -169,6 +169,9 @@ return [
         ],
         'no_polisi' => [
             'unique' => 'Nomor Polisi Sudah Ada'
+        ],
+        'email' => [
+            'unique' => 'Email Sudah Terdaftar'
         ]
     ],
 

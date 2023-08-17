@@ -68,11 +68,20 @@
                 <p class="text-gray-500 mt-4">Kendala:</p>
                 <textarea name="kendala" class="block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" rows="4"
                     @disabled($order->status_order == 'Menunggu')>{{ $order->kendala }}</textarea>
+                @if ($order->status_order == 'Sedang Diproses')
+                    <div class="mb-4 mt-4">
+                        <label for="kilometer" class="block text-sm font-medium text-gray-700">Kilometer</label>
+                        <input type="text" id="kilometer" name="kilometer" placeholder="Masukkan Kilometer"
+                            class="mt-1 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
+                            value="{{ $order->motor->kilometer }}">
+                    </div>
+                @endif
                 <div class="mb-4 mt-4">
                     <label for="nama_montir" class="block text-sm font-medium text-gray-700">Pilih Montir</label>
                     <select name="montir_id" id="montir_id"
                         class="focus:shadow-soft-primary-outline text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none">
-                        <option value="" @if (!$order->montir_id) selected @endif>---Pilih Montir---</option>
+                        <option value="" @if (!$order->montir_id) selected @endif>---Pilih Montir---
+                        </option>
                         @foreach ($montirs as $montir)
                             <option value="{{ $montir->id }}" @if ($montir->id == $order->montir_id) selected @endif>
                                 {{ $montir->nama }}

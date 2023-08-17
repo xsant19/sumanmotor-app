@@ -130,6 +130,8 @@
                 </tfoot>
             </table>
             <p>Kendala: <b>{{ $order->kendala }}</b></p>
+            <p>Jadwal Service Rutin :</span> <b>
+                    {{ $order->motor->kilometer + 2000 }} Km atau 2 Bulan Setelah Service.</p>
             <p>Silakan datang ke bengkel kami dalam jam operasional untuk mengambil motor Anda. Pastikan untuk membawa
                 bukti order saat Anda datang ke bengkel.</p>
             <p>Terima kasih atas kepercayaan Anda kepada Bengkel Suman Motor. Kami berharap Anda puas dengan layanan

@@ -85,6 +85,7 @@ class OrderController extends Controller
     {
         $order =  Order::find($id);
         $order->status_order = 'Sedang Diproses';
+        $order->motor->kilometer = $request['kilometer'];
         $order->montir_id = $request['montir_id'];
         $order->save();
         return redirect()->route('orders.detail', ['id' => $id]);
@@ -94,7 +95,9 @@ class OrderController extends Controller
     {
         $order =  Order::find($id);
         $order->kendala = $request['kendala'];
+        $order->motor->kilometer = $request['kilometer'];
         $order->montir_id = $request['montir_id'];
+        $order->motor->save();
         $order->save();
         // return redirect()->route('orders.detail', ['id' => $id])->with('success', 'Data Order Berhasil Ditambahkan');;
         return redirect()->route('admin.orders.index')->with('success', 'Data Order Berhasil Diedit');;

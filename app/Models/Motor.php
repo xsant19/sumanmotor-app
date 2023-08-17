@@ -15,11 +15,12 @@ class Motor extends Model
         'merk_motor',
         'jenis_motor',
         'no_polisi',
+        'kilometer',
         'user_id',
     ];
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withTrashed();
     }
 }

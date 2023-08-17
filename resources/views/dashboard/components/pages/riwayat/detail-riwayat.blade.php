@@ -40,6 +40,9 @@
                             <p class="mb-2"><span class="font-semibold">Status Order:</span>
                                 {{ $order->status_order }}
                             </p>
+                            <p class="mb-2"><span class="font-semibold">Kilometer:</span>
+                                {{ $order->motor->kilometer ?? 0 }}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -79,6 +82,8 @@
             <div class="mt-6">
                 <p class="text-gray-600 mb-2"><span class="font-semibold">Kendala dari Motor :</span>
                     {{ $order->kendala }}</p>
+                <p class="text-gray-600 mb-2"><span class="font-semibold">Jadwal Service Rutin :</span>
+                    {{ $order->motor->kilometer + 2000 }} Km atau 2 Bulan Setelah Service.</p>
                 <p class="text-gray-600 text-sm">Note: Informasi kendala dari motor akan ditampilkan di sini.</p>
             </div>
         </div>

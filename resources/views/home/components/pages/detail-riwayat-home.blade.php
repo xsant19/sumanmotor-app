@@ -22,6 +22,9 @@
                             {{ $order->motor->no_polisi }}</p>
                         <p class="mb-2"><span class="font-semibold">No Antri :</span> {{ $order->no_antri }}
                         </p>
+                        <p class="mb-2"><span class="font-semibold">Kilometer:</span>
+                            {{ $order->motor->kilometer ?? 0 }}
+                        </p>
                     </div>
                     <div>
                         <p class="mb-2"><span class="font-semibold">Tanggal Order:</span>
@@ -77,6 +80,10 @@
         <div class="mt-6">
             <p class="text-gray-600 mb-2"><span class="font-semibold">Kendala dari Motor :</span>
                 {{ $order->kendala }}</p>
+            @if ($order->status_order == 'Selesai')
+                <p class="text-gray-600 mb-2"><span class="font-semibold">Jadwal Service Rutin :</span>
+                    {{ $order->motor->kilometer + 2000 }} Km atau 2 Bulan Setelah Service.</p>
+            @endif
             <p class="text-gray-600 text-sm">Note: Informasi kendala dari motor akan berubah seiring pengecekan.</p>
         </div>
     </div>

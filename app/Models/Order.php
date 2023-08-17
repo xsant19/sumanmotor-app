@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Events\OrderUpdated;
+use App\Events\ServiceReminderEvent;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -26,6 +27,8 @@ class Order extends Model
         'updated' => OrderUpdated::class
     ];
 
+
+
     public function motor(): BelongsTo
     {
         return $this->belongsTo(Motor::class)->withTrashed();
@@ -33,7 +36,7 @@ class Order extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class)->withTrashed();
     }
 
     public function montir(): BelongsTo
