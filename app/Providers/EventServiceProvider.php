@@ -21,7 +21,10 @@ class EventServiceProvider extends ServiceProvider
         ],
         \App\Events\OrderUpdated::class => [
             \App\Listeners\SendMailOrderFinish::class
-        ]
+        ],
+        OrderCompletedReminder::class => [
+            SendOrderCompletedReminderEmail::class,
+        ],
     ];
 
     /**

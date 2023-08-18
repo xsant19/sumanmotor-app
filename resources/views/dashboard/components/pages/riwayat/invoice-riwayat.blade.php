@@ -103,6 +103,7 @@
             <p>Kami ingin memberitahukan bahwa orderan Anda telah selesai diproses dan motor Anda sudah siap untuk
                 diambil di Bengkel Suman Motor.</p>
             <p class="highlight">Nomor Order: {{ $order->no_order }}</p>
+            <p class="highlight">Motor : {{ $order->motor->nama }} dengan No Polisi :{{ $order->motor->no_polisi }}</p>
             <table class="invoice-table">
                 <thead>
                     <tr>

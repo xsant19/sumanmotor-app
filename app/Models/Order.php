@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Events\OrderUpdated;
 use App\Events\ServiceReminderEvent;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -27,7 +28,16 @@ class Order extends Model
         'updated' => OrderUpdated::class
     ];
 
+    public static function boot()
+    {
+        parent::boot();
 
+        static::updating(function ($order) {
+            if ($order->status_order == "Selesai") {
+                $order->close_at = Carbon::now("+08:00");
+            }
+        });
+    }
 
     public function motor(): BelongsTo
     {
